@@ -1,0 +1,16 @@
+{
+  "BUU-BUU.title": "Buu",
+  "BUU-BUU.titleObject": "Buu",
+  "BUU-BUU.description": "A malleable Majin with stances and Ki.",
+  "BUU-BUU.pronounSubject": "they",
+  "BUU-BUU.pronounObject": "them",
+  "BUU-BUU.pronounPossessive": "theirs",
+  "BUU-BUU.possessiveAdjective": "their",
+  "BUU-BUU.goldMonologue": "...",
+  "BUU-BUU.eventDeathPrevention": "...",
+  "BUU-BUU.aromaPrinciple": "...",
+  "BUU-BUU.cardsModifierTitle": "Buu Cards",
+  "BUU-BUU.cardsModifierDescription": "Buu cards will now appear in rewards and shops.",
+  "BUU-BUU.banter.alive.endTurnPing": "...",
+  "BUU-BUU.banter.dead.endTurnPing": "..."
+}

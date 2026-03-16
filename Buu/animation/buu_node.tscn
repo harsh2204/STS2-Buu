@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://u7fysxuknhdt"]
+
+[ext_resource type="SpineSkeletonDataResource" uid="uid://bh8lccneewmho" path="res://Buu/animation/buu_skel_data.tres" id="1_skel"]
+
+[node name="BuuNode" type="SpineSprite"]
+skeleton_data_res = ExtResource("1_skel")

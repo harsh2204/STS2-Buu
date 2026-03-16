@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://k30hb34n0jcx"
+path="res://.godot/imported/buu.skel-3e02b3c02986c33368853d45e4d0cb1a.spskel"
+
+[deps]
+
+source_file="res://Buu/animation/binary/buu.skel"
+dest_files=["res://.godot/imported/buu.skel-3e02b3c02986c33368853d45e4d0cb1a.spskel"]
+
+[params]
+

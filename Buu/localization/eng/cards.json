@@ -1,0 +1,12 @@
+{
+  "BUU-KI_BLAST.title": "Ki Blast",
+  "BUU-KI_BLAST.description": "Deal {Damage:diff()} damage.",
+  "BUU-PUNCH.title": "Punch",
+  "BUU-PUNCH.description": "Deal {Damage:diff()} damage.",
+  "BUU-GUARD.title": "Guard",
+  "BUU-GUARD.description": "Gain {Block:diff()} [gold]Block[/gold].",
+  "BUU-HEADBUTT.title": "Headbutt",
+  "BUU-HEADBUTT.description": "Deal {Damage:diff()} damage.",
+  "BUU-GOOD_FORM.title": "Good Form",
+  "BUU-GOOD_FORM.description": "Gain {Block:diff()} [gold]Block[/gold]."
+}

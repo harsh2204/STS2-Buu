@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqcharselectbgbuu"]
+
+[ext_resource type="Texture2D" uid="uid://bqx7charselectbgbuu" path="res://Buu/images/packed/character_select/char_select_bg_buu.jpg" id="1_bg"]
+
+[node name="BuuBg" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+expand_mode = 1
+stretch_mode = 5
+texture = ExtResource("1_bg")

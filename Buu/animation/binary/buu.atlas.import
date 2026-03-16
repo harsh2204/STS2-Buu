@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://couucaaffig0e"
+path="res://.godot/imported/buu.atlas-ce68d89e4f66a12af2a87858699cb0c5.spatlas"
+
+[deps]
+
+source_file="res://Buu/animation/binary/buu.atlas"
+dest_files=["res://.godot/imported/buu.atlas-ce68d89e4f66a12af2a87858699cb0c5.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"
