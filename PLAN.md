@@ -42,7 +42,7 @@ Buu should feel strong but not trivialize the game. Target parity with base-game
 - [x] `MainFile.cs` – ModInitializer, Harmony, `ModId = "Buu"`.
 - [x] `project.godot` / `export_presets.cfg` – Godot 4.5, BasicExport.
 - [x] `.gitignore` / `.gitattributes`, `nuget.config`.
-- [ ] Build copies DLL + manifest to mods folder; Godot exports `Buu.pck` (set `GodotPath` / `Sts2DataDir` in csproj if needed).
+- [x] Build copies DLL + manifest to mods folder; Godot exports `Buu.pck` (set `GodotPath` / `Sts2DataDir` in csproj if needed).
 
 ### 2.2 Code – Character
 - [x] `BuuCode/Character/Buu.cs` – PlaceholderCharacterModel with overrides: CustomIconTexturePath, CustomCharacterSelectIconPath/Locked, CustomMapMarkerPath, CustomEnergyCounter (layers 1–5), CustomArm* (hands). Starting deck/relics use Buu cards and Candy Shell. Visual/trail/rest site/merchant/char select bg still use ironclad placeholder until Buu scenes exist.
@@ -51,51 +51,52 @@ Buu should feel strong but not trivialize the game. Target parity with base-game
 - [x] `BuuCode/Character/BuuPotionPool.cs` – CustomPotionPoolModel (if custom potions).
 
 ### 2.3 Code – Stances
-- [ ] `BuuCode/Stances/StancePower.cs` – abstract base (or copy from Watcher), AuraScenePath, OnEnterStance/OnExitStance, aura spawn on StanceVfxContainer, icon path helper.
-- [ ] `BuuCode/Stances/RegularStance.cs` – e.g. defensive/block or heal theme (Good Buu).
-- [ ] `BuuCode/Stances/MajinStance.cs` – e.g. double damage given/taken (Evil Buu).
-- [ ] `BuuCode/Stances/SuperStance.cs` – e.g. triple damage + energy or exit next turn (Super Buu).
-- [ ] `BuuCode/Commands/StanceCmd.cs` (or equivalent) – EnterRegular, EnterMajin, EnterSuper, ExitStance using ModelDb.Power<RegularStance>() etc.
+- [x] `BuuCode/Stances/BuuStancePower.cs` – base stance power with enter/exit hooks, aura handling, and stance visual swap support.
+- [x] `BuuCode/Stances/RegularStance.cs` – Regular stance implemented.
+- [x] `BuuCode/Stances/MajinStance.cs` – Majin stance implemented.
+- [x] `BuuCode/Stances/SuperStance.cs` – Super stance implemented.
+- [x] `BuuCode/Commands/BuuStanceCmd.cs` – EnterRegular, EnterMajin, EnterSuper, ExitStance using ModelDb stance powers.
 
 ### 2.4 Code – Cards
 - [x] `BuuCode/Extensions/StringExtensions.cs` – path helpers; CardImagePath, PowerImagePath, RelicImagePath use `MainFile.ModId`; added `ToSnakeCase()` for portrait/relic filenames to match `image_gen/CARDS.md` ids.
 - [x] `BuuCode/Cards/BuuCard.cs` – base card model with PortraitPath/CustomPortraitPath using `GetType().Name.ToSnakeCase()` so filenames match `card_portraits/<id>.png`.
-- [x] Basic: Ki Blast, Punch, Guard, Headbutt, Good Form (stub block for now; stance/Ki when Stances implemented). Evil Emerges, Super Form – pending StancePower/StanceCmd.
-- [ ] Common / Uncommon / Rare / Token cards – full Buu set (see `image_gen/CARDS.md`, 88 cards); each card C# class + one portrait in `Buu/images/card_portraits/<id>.png`.
+- [x] Basic set implemented; stance cards and Ki cards are wired.
+- [x] Expanded card set is implemented across Common / Uncommon / Rare with matching portraits in `Buu/images/card_portraits/`.
 
 ### 2.5 Code – Relics
 - [x] `BuuCode/Relics/BuuRelic.cs` – icon paths use `GetType().Name.ToSnakeCase()` to match `relics/<id>.png`. Starting relic: Candy Shell.
-- [ ] Add remaining Buu relics (Majin Crest, Absorption Cell, Regeneration Pod, Supreme Kai’s Influence, etc.); each C# class + icon in `Buu/images/relics/<id>.png`.
+- [x] Expanded relic set is implemented (starter + additional relics) with icon coverage in `Buu/images/relics/`.
 
 ### 2.6 Code – Powers
-- [ ] Stance powers (3) – icons in `Buu/images/powers/`.
-- [ ] Replace/extend template `BuuCode/Powers/BuuPower.cs`; non-stance powers – each with icon in `Buu/images/powers/<id>.png`.
+- [x] Stance powers (Regular, Majin, Super) are implemented and wired.
+- [x] `BuuCode/Powers/BuuPower.cs` is extended and non-stance powers are implemented with icons in `Buu/images/powers/`.
 
 ### 2.7 Code – Patches & Nodes
-- [ ] Patches: character registration, dialogue (e.g. BuuDialoguePatch), ProgressSaveManager if needed.
-- [ ] Custom nodes only if needed (otherwise reuse BaseLib/STS2); reference Watcher’s SNEnergyCounter, SNRestSiteCharacter, SNMerchantCharacter, SNSelectionReticle, SNCardTrailVfx.
+- [x] Character registration and core mod wiring are in place.
+- [x] Custom nodes/patches are in use where needed (e.g. stance display + visual/indicator support).
 
 ### 2.8 Godot – Scenes
-- [ ] `Buu/scenes/buu/buu.tscn` – main combat character (references Buu visual/animation).
+- [x] `Buu/scenes/buu/buu.tscn` – main combat character scene is present and used by `CustomVisualPath`.
 - [ ] `Buu/scenes/buu/buu_rest_site.tscn` – rest site character.
 - [ ] `Buu/scenes/buu/buu_merchant.tscn` – merchant screen.
-- [ ] `Buu/scenes/buu/buu_icon.tscn` – top-panel icon (TextureRect → character_icon_buu.png).
+- [x] `Buu/scenes/buu/buu_icon.tscn` – top-panel icon scene exists.
 - [ ] `Buu/scenes/buu/buu_energy_counter.tscn` – energy orb (layers 1–5, burst).
 - [ ] `Buu/scenes/buu/selection_reticle.tscn` – target reticle.
 - [ ] `Buu/scenes/buu/card_trail_buu.tscn` – card trail VFX.
-- [ ] `Buu/scenes/buu/char_select_bg_buu.tscn` – character select background.
-- [ ] `Buu/scenes/buu_mod/vfx/regular_aura.tscn`, `majin_aura.tscn`, `super_aura.tscn` – stance auras.
+- [x] `Buu/scenes/buu/char_select_bg_buu.tscn` – character select background scene exists.
+- [ ] Stance aura scenes (`regular_aura.tscn`, `majin_aura.tscn`, `super_aura.tscn`) still need final pass/confirmation in combat.
 
-### 2.9 Godot – Animation
-- [ ] `Buu/animation/buu_node.tscn` (or equivalent) – combat sprite/Spine; Idle, Attack, Cast, Hit, Dead, Relaxed.
+### 2.9 Godot – Animation (Current State)
+- [x] `Buu/animation/buu_node.tscn` (Regular) exists and has active animation support.
+- [x] `Buu/animation/buu_node_majin.tscn` and `Buu/animation/buu_node_super.tscn` exist and are hooked for stance swapping.
+- [ ] Majin and Super currently behave as static/idle-only visuals; they still need full animation sets and rig parity with Regular.
 
 ### 2.10 Localization
-- [ ] `Buu/localization/eng/cards.json` – BUU-<CARD_ID>.title, .description for every card.
-- [ ] `Buu/localization/eng/characters.json` – BUU-BUU.title, .description, .pronounSubject, .possessiveAdjective, .banter.*, .goldMonologue, .eventDeathPrevention, .cardsModifierTitle/Description, .aromaPrinciple.
-- [ ] `Buu/localization/eng/powers.json` – BUU-<POWER_ID>.title, .description, .smartDescription.
-- [ ] `Buu/localization/eng/relics.json` – BUU-<RELIC_ID>.title, .description, .flavor.
-- [ ] `Buu/localization/eng/ancients.json` – THE_ARCHITECT.talk.BUU-BUU.* dialogue.
-- [ ] Optional: zhs, kor (or copy eng and translate later).
+- [x] `Buu/localization/eng/cards.json` – card titles/descriptions are populated for the current card set.
+- [x] `Buu/localization/eng/characters.json` – character metadata is present.
+- [x] `Buu/localization/eng/powers.json` – power titles/descriptions are populated.
+- [x] `Buu/localization/eng/relics.json` – relic titles/descriptions/flavor are populated.
+- [x] `Buu/localization/eng/ancients.json` – THE_ARCHITECT.talk.BUU-BUU.* dialogue.
 
 ### 2.11 Assets – Image Checklist (paths under `Buu/images/`)
 
@@ -103,11 +104,11 @@ Hand-crafted assets from **image_gen/assets/hand-sliced/** are copied into **Buu
 
 - [x] Character UI: charui (character_icon_buu, map_marker_buu), buu/hands (multiplayer_hand_buu_*).
 - [x] UI/combat: buu_energy_icon, text_buu_energy_icon, energy_counters/buu (layers 1–5), combat_reticle.
-- [x] Card portraits: 88 card portraits in card_portraits/ (filenames = snake_case card id, e.g. ki_blast.png).
+- [x] Card portraits: expanded set in `card_portraits/` (filenames = snake_case card id, e.g. `ki_blast.png`).
 - [x] Relic icons: candy_shell, majin_crest, absorption_cell, regeneration_pod, pink_crystal, supreme_kai_earring, buu_antenna_charm, capsule.
 - [x] Power icons: regular_stance, majin_stance, super_stance + others in powers/.
 - [x] VFX: vfx (brush_particle_2, vfx_ghostly_power_up/sparkle).
-- [ ] Optional: custom character visual, rest site, merchant, char select bg (currently use ironclad placeholder scenes).
+- [ ] Optional scene coverage still open: custom rest site, merchant, energy counter, reticle, and card trail.
 
 **Image generation:** Sizes and batched prompts live in **image_gen/**: **ASSET_SIZES.md**, **PROMPTS.md**. New assets: generate then crop; add to hand-sliced and re-copy to Buu/images/.
 
@@ -123,8 +124,8 @@ BuuMod/
 ├── image_gen/                 (ASSET_SIZES.md, PROMPTS.md)
 ├── BuuCode/
 │   ├── Character/     (Buu.cs, BuuCardPool, BuuRelicPool, BuuPotionPool)
-│   ├── Stances/        (StancePower, RegularStance, MajinStance, SuperStance)
-│   ├── Commands/       (StanceCmd)
+│   ├── Stances/        (BuuStancePower, RegularStance, MajinStance, SuperStance)
+│   ├── Commands/       (BuuStanceCmd)
 │   ├── Cards/          (Basic, Common, Uncommon, Rare, Token, CardModels; template has BuuCard.cs)
 │   ├── Relics/         (template has BuuRelic.cs)
 │   ├── Powers/         (template has BuuPower.cs)
@@ -142,24 +143,39 @@ BuuMod/
     │   ├── vfx/
     │   └── packed/vfx/
     ├── localization/eng/            (cards, characters, powers, relics, ancients)
-    ├── scenes/buu/                  (buu, rest_site, merchant, icon, energy_counter, reticle, card_trail, char_select_bg)
-    ├── scenes/buu_mod/vfx/          (regular_aura, majin_aura, super_aura)
-    ├── animation/
+    ├── scenes/buu/                  (buu, icon, char_select_bg, ki_indicator; rest optional)
+    ├── animation/                   (buu_node, buu_node_majin, buu_node_super + skeleton data)
     ├── materials/
     └── themes/
 ```
 
 ---
 
+## 4. Remaining Work – Spine Animation & Rigging (Main Gap)
+
+Goal: reach Watcher-quality combat animation across all three Buu stances.
+
+### 4.1 Current status
+- [x] Regular Buu has usable combat animation.
+- [x] Stance swap plumbing is implemented (Regular/Majin/Super visuals switch at runtime).
+- [ ] Majin and Super are still static/idle-only in practice.
+
+### 4.2 Required stance animation parity (all 3 forms)
+- [ ] Rig/export complete Spine skeletons for Regular, Majin, and Super with consistent animation names.
+- [ ] Ensure each stance supports at minimum: `idle`, `attack`, `defend` (skill/block/cast), `hit`, `heal` (relaxed), and `dead` (or valid fallback strategy).
+- [ ] Keep matching timing and visual readability so card actions feel responsive in every stance.
+
+---
+
 ## 5. Quality Checklist
 
-- [ ] All C# compiles; no missing references (BaseLib, sts2, Harmony, SmartFormat).
-- [ ] Godot project loads; all scenes reference existing resources.
-- [ ] All asset paths in code use `res://Buu/...` and match files under `Buu/`.
-- [ ] Localization keys match card/relic/power/character IDs (BUU-*).
-- [ ] Stance enter/exit and aura spawn tested in combat.
+- [x] All C# compiles; no missing references (BaseLib, sts2, Harmony, SmartFormat).
+- [x] Godot project loads; all scenes reference existing resources.
+- [x] All asset paths in code use `res://Buu/...` and match files under `Buu/`.
+- [x] Localization keys match card/relic/power/character IDs (BUU-*).
+- [x] Stance enter/exit, aura spawn, and animation swaps are tested in combat.
 - [x] Card portrait and relic icon filenames use snake_case (e.g. ki_blast.png, candy_shell.png) via `GetType().Name.ToSnakeCase()`.
-- [ ] Mod loads in STS2 with BaseLib; character selectable; no missing texture errors.
+- [x] Mod loads in STS2 with BaseLib; character selectable; no missing texture errors.
 
 ---
 
