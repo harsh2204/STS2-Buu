@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://bomym55elg8t1"
+path="res://.godot/imported/buu_animation_majin.skel-24ac4749aedff3f3c456627347b487e7.spskel"
+
+[deps]
+
+source_file="res://Buu/animation/binary/buu_animation_majin.skel"
+dest_files=["res://.godot/imported/buu_animation_majin.skel-24ac4749aedff3f3c456627347b487e7.spskel"]
+
+[params]
+

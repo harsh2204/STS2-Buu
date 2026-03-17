@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://bvhjbosl5spme"
+path="res://.godot/imported/majin-buu.atlas-21e98150fa12c7e19a0fed3a9c8f6086.spatlas"
+
+[deps]
+
+source_file="res://Buu/animation/binary/majin-buu.atlas"
+dest_files=["res://.godot/imported/majin-buu.atlas-21e98150fa12c7e19a0fed3a9c8f6086.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

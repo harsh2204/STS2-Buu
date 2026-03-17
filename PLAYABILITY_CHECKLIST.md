@@ -53,7 +53,7 @@ Check game logs after picking a reward; look for null reference, missing resourc
 | Area | Watcher | Buu | Notes |
 |------|---------|-----|--------|
 | Basic (Strike/Defend-style) | 4 + 2 stance | 5 (Ki Blast, Punch, Guard, Headbutt, Good Form) | Buu has no stance cards yet. |
-| Common / Uncommon / Rare | Many | 0 | CARDS.md has 88; only basics wired. |
+| Common / Uncommon / Rare | Many | Yes | 6 Common, 6 Uncommon, 4 Rare wired; more in CARDS.md. |
 | Token cards | Yes (Miracle, etc.) | 0 | — |
 | Card portraits in code | PortraitPath / CustomPortraitPath | Yes (BuuCard base) | Paths: `card_portraits/<id>.png`, `big/` for custom. |
 | Card portraits on disk | Per card | Only basics + any you added | Must match C# card class names (snake_case). |
@@ -65,7 +65,7 @@ Check game logs after picking a reward; look for null reference, missing resourc
 | Area | Watcher | Buu | Notes |
 |------|---------|-----|--------|
 | Starter | Holy Water / Pure Water | Candy Shell | Candy Shell: start 4 Ki, +2 Ki/turn. |
-| Common / Uncommon / Rare | Several | 0 | CARDS.md / PLAN list more Buu relics. |
+| Common / Uncommon / Rare | Several | Yes | Majin Crest (Common), Absorption Cell + Regeneration Pod (Uncommon). |
 | Relic icons in code | PackedIconPath | Yes (BuuRelic base) | `relics/<id>.png`. |
 | Relic icons on disk | Per relic | candy_shell + any added | — |
 
@@ -75,7 +75,7 @@ Check game logs after picking a reward; look for null reference, missing resourc
 
 | Area | Watcher | Buu | Notes |
 |------|---------|-----|--------|
-| Stance powers | 3 (Calm, Wrath, Divinity) | 0 | Regular/Majin/Super not implemented. |
+| Stance powers | 3 (Calm, Wrath, Divinity) | 3 (Regular, Majin, Super) | BuuStancePower + BuuStanceCmd; Evil Emerges, Good Riddance, Super Aura. |
 | Ki resource | — | KiPower (counter) | Used by Candy Shell; shows as power icon. |
 | Other powers | Mantra, Foresight, etc. | 0 | — |
 | Power icons | Per power | KiPower uses power.png | Add `ki_power.png` (or keep fallback). |
@@ -143,9 +143,9 @@ Paths under `Buu/images/` (and in .pck). “Wired” = referenced in C# or scene
 | File | Buu status | Notes |
 |------|------------|--------|
 | characters.json | Basic | BUU-BUU.* (title, description, pronouns, banter placeholders). |
-| cards.json | Basic only | Ki Blast, Punch, Guard, Headbutt, Good Form. |
+| cards.json | Full for wired cards | All basics + Common/Uncommon/Rare + stance cards. |
 | relics.json | Candy Shell | title, description, flavor. |
-| powers.json | KiPower | title, description, smartDescription. |
+| powers.json | KiPower + stances | KiPower, Regular Stance, Majin Stance, Super Stance. |
 | static_hover_tips / ancients / card_keywords | Minimal/empty | Add as you add content. |
 
 ---

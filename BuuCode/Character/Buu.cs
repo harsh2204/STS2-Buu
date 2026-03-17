@@ -68,13 +68,13 @@ public class Buu : PlaceholderCharacterModel
 
     public override CreatureAnimator? SetupCustomAnimationStates(MegaSprite controller)
     {
-        // All combat states currently use the Spine "idle" animation.
+        // Idle, Attack, Cast (block/skills → "defend"), Relaxed (rest → "heal"). Hit/Dead fall back to idle.
         return SetupAnimationState(controller,
             idleName: "idle",
             deadName: "idle", deadLoop: true,
             hitName: "idle", hitLoop: true,
-            attackName: "idle", attackLoop: true,
-            castName: "idle", castLoop: true,
-            relaxedName: "idle", relaxedLoop: true);
+            attackName: "attack", attackLoop: false,
+            castName: "defend", castLoop: false,
+            relaxedName: "heal", relaxedLoop: false);
     }
 }

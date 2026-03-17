@@ -1,5 +1,14 @@
 {
   "BUU-KI_POWER.title": "Ki",
   "BUU-KI_POWER.description": "Secondary resource for Buu cards.",
-  "BUU-KI_POWER.smartDescription": "Secondary resource for Buu cards."
+  "BUU-KI_POWER.smartDescription": "Secondary resource for Buu cards.",
+  "BUU-REGULAR_STANCE.title": "Regular",
+  "BUU-REGULAR_STANCE.description": "Good Buu form. Defensive theme.",
+  "BUU-REGULAR_STANCE.smartDescription": "Good Buu form.",
+  "BUU-MAJIN_STANCE.title": "Majin",
+  "BUU-MAJIN_STANCE.description": "Deal and receive double damage.",
+  "BUU-MAJIN_STANCE.smartDescription": "Double damage dealt and taken.",
+  "BUU-SUPER_STANCE.title": "Super",
+  "BUU-SUPER_STANCE.description": "Deal triple damage. Exit at end of turn.",
+  "BUU-SUPER_STANCE.smartDescription": "Triple damage. Exit next turn."
 }

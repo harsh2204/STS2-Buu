@@ -1,5 +1,14 @@
 {
   "BUU-CANDY_SHELL.title": "Candy Shell",
   "BUU-CANDY_SHELL.description": "Start each combat with 4 [gold]Ki[/gold]. At the start of your turn, gain 2 [gold]Ki[/gold].",
-  "BUU-CANDY_SHELL.flavor": "A sweet layer of protection."
+  "BUU-CANDY_SHELL.flavor": "A sweet layer of protection.",
+  "BUU-MAJIN_CREST.title": "Majin Crest",
+  "BUU-MAJIN_CREST.description": "At the start of your turn, gain 1 [gold]Ki[/gold].",
+  "BUU-MAJIN_CREST.flavor": "A fragment of evil power.",
+  "BUU-ABSORPTION_CELL.title": "Absorption Cell",
+  "BUU-ABSORPTION_CELL.description": "At the start of combat, gain 3 [gold]Ki[/gold].",
+  "BUU-ABSORPTION_CELL.flavor": "Stored potential.",
+  "BUU-REGENERATION_POD.title": "Regeneration Pod",
+  "BUU-REGENERATION_POD.description": "At the start of your turn, heal 1 HP.",
+  "BUU-REGENERATION_POD.flavor": "Buu's resilience."
 }

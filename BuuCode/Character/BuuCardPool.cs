@@ -6,7 +6,6 @@ namespace Buu.BuuCode.Character;
 public class BuuCardPool : CustomCardPoolModel
 {
     public override string Title => Buu.CharacterId; //This is not a display name.
-    public override string EnergyColorName => Buu.CharacterId;
 
     /* These HSV values will determine the color of your card back.
     They are applied as a shader onto an already colored image,
