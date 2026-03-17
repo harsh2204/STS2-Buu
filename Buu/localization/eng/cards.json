@@ -28,7 +28,7 @@
   "BUU-PINK_BLAST.title": "Pink Blast",
   "BUU-PINK_BLAST.description": "Spend 1 [pink]Ki[/pink]. Deal {Damage:diff()} damage to ALL enemies.",
   "BUU-REFORM.title": "Reform",
-  "BUU-REFORM.description": "Gain {Block:diff()} [gold]Block[/gold]. Draw 1 card. [gold]Exhaust[/gold].",
+  "BUU-REFORM.description": "Gain {Block:diff()} [gold]Block[/gold]. Draw 1 card.",
   "BUU-SUPER_FORM.title": "Super Form",
   "BUU-SUPER_FORM.description": "Spend 2 [pink]Ki[/pink]. Gain {Block:diff()} [gold]Block[/gold]. Gain 2 [gold]Energy[/gold].",
   "BUU-MAJIN_BURST.title": "Majin Burst",
