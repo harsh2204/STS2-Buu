@@ -15,5 +15,9 @@ public sealed class SuperAura() : BuuCard(0, CardType.Skill, CardRarity.Rare, Ta
         await BuuStanceCmd.EnterSuper(Owner.Creature, choiceContext);
     }
 
-    protected override void OnUpgrade() { }
+    protected override void OnUpgrade()
+    {
+        AddKeyword(CardKeyword.Innate);
+        BaseReplayCount += 1;
+    }
 }

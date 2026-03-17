@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using BaseLib.Abstracts;
 using BaseLib.Extensions;
 using Buu.BuuCode.Extensions;
@@ -40,11 +41,35 @@ public abstract class BuuStancePower : BuuPower
         await Task.CompletedTask;
     }
 
+    private static readonly Dictionary<string, string> SceneToSkeletonPath = new()
+    {
+        ["res://Buu/animation/buu_node.tscn"] = "res://Buu/animation/buu_skel_data.tres",
+        ["res://Buu/animation/buu_node_majin.tscn"] = "res://Buu/animation/buu_majin_skel_data.tres",
+        ["res://Buu/animation/buu_node_super.tscn"] = "res://Buu/animation/buu_super_skel_data.tres"
+    };
+
     private static void ReplaceVisualsWithStanceScene(Creature owner, string scenePath)
     {
         var creatureNode = MegaCrit.Sts2.Core.Nodes.Rooms.NCombatRoom.Instance?.GetCreatureNode(owner);
         if (creatureNode == null || string.IsNullOrEmpty(scenePath)) return;
 
+        var oldVisuals = creatureNode.GetNodeOrNull("Visuals");
+        if (oldVisuals != null && SceneToSkeletonPath.TryGetValue(scenePath, out var skeletonPath))
+        {
+            var skeletonRes = GD.Load<Resource>(skeletonPath);
+            if (skeletonRes != null)
+            {
+                oldVisuals.Set("skeleton_data_res", skeletonRes);
+                RemoveStancePortraitFallback(creatureNode);
+                return;
+            }
+        }
+
+        ReplaceVisualsNodeEntirely(creatureNode, scenePath);
+    }
+
+    private static void ReplaceVisualsNodeEntirely(Node creatureNode, string scenePath)
+    {
         var oldVisuals = creatureNode.GetNodeOrNull("Visuals") as Node2D;
         var position = oldVisuals?.Position ?? new Vector2(0, -19.805f);
         var scale = oldVisuals?.Scale ?? Vector2.One;
@@ -63,6 +88,16 @@ public abstract class BuuStancePower : BuuPower
         newVisuals.Position = position;
         newVisuals.Scale = scale;
         creatureNode.AddChild(newVisuals);
+        RemoveStancePortraitFallback(creatureNode);
+    }
+
+    private static void RemoveStancePortraitFallback(Node creatureNode)
+    {
+        foreach (var child in creatureNode.GetChildren())
+        {
+            if (child.Name.ToString().Contains("Portrait", StringComparison.OrdinalIgnoreCase))
+                child.QueueFree();
+        }
     }
 
     private Task CreateAura(Creature owner)

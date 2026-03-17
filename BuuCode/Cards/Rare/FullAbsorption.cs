@@ -5,6 +5,7 @@ using Buu.BuuCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 
 namespace Buu.BuuCode.Cards.Rare;
@@ -17,16 +18,26 @@ public sealed class FullAbsorption() : BuuCard(3, CardType.Skill, CardRarity.Rar
     private const int DrawBase = 2;
     private const int DrawUpgraded = 3;
 
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
+        new PowerVar<KiPower>((int)KiBase),
+        new CardsVar(DrawBase)
+    ];
+
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var ki = IsUpgraded ? KiUpgraded : KiBase;
+        var amount = DynamicVars["KiPower"].IntValue;
         var kiPower = Owner.Creature.Powers.OfType<KiPower>().FirstOrDefault();
         if (kiPower != null)
-            await PowerCmd.ModifyAmount(kiPower, ki, null, null);
+            await PowerCmd.ModifyAmount(kiPower, amount, null, null);
         else
-            await PowerCmd.Apply<KiPower>(Owner.Creature, ki, Owner.Creature, null);
-        await CardPileCmd.Draw(choiceContext, IsUpgraded ? DrawUpgraded : DrawBase, Owner);
+            await PowerCmd.Apply<KiPower>(Owner.Creature, amount, Owner.Creature, null);
+        await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.IntValue, Owner);
     }
 
-    protected override void OnUpgrade() { }
+    protected override void OnUpgrade()
+    {
+        DynamicVars["KiPower"].UpgradeValueBy((int)(KiUpgraded - KiBase));
+        DynamicVars.Cards.UpgradeValueBy(DrawUpgraded - DrawBase);
+    }
 }

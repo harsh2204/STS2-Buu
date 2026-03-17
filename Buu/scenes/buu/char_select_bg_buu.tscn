@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bqcharselectbgbuu"]
+[gd_scene load_steps=5 format=3 uid="uid://bqcharselectbgbuu"]
 
 [ext_resource type="Texture2D" uid="uid://bqx7charselectbgbuu" path="res://Buu/images/packed/character_select/char_select_bg_buu.jpg" id="1_bg"]
+[ext_resource type="Shader" path="res://Buu/shaders/char_select_pink_smoke.gdshader" id="2_smoke_shader"]
+[ext_resource type="Script" path="res://Buu/scenes/buu/MouseTrailOverlay.gd" id="3_mouse_trail"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_smoke"]
+shader = ExtResource("2_smoke_shader")
 
 [node name="BuuBg" type="Control"]
 layout_mode = 3
@@ -16,3 +21,20 @@ anchor_bottom = 1.0
 expand_mode = 1
 stretch_mode = 5
 texture = ExtResource("1_bg")
+
+[node name="PinkSmokeOverlay" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+material = SubResource("ShaderMaterial_smoke")
+color = Color(1, 1, 1, 1)
+
+[node name="MouseTrailOverlay" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource("3_mouse_trail")

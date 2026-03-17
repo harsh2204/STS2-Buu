@@ -11,7 +11,9 @@ namespace Buu.BuuCode.Relics;
 [Pool(typeof(BuuRelicPool))]
 public sealed class AbsorptionCell() : BuuRelic
 {
-    public override RelicRarity Rarity => RelicRarity.Uncommon;
+    private const decimal KiAtCombatStart = 5m;
+
+    public override RelicRarity Rarity => RelicRarity.Rare;
 
     public override async Task AfterSideTurnStart(CombatSide side, CombatState combatState)
     {
@@ -20,9 +22,9 @@ public sealed class AbsorptionCell() : BuuRelic
 
         var kiPower = Owner.Creature.Powers.OfType<KiPower>().FirstOrDefault();
         if (kiPower != null)
-            await PowerCmd.ModifyAmount(kiPower, 3m, null, null);
+            await PowerCmd.ModifyAmount(kiPower, KiAtCombatStart, null, null);
         else
-            await PowerCmd.Apply<KiPower>(Owner.Creature, 3m, Owner.Creature, null);
+            await PowerCmd.Apply<KiPower>(Owner.Creature, KiAtCombatStart, Owner.Creature, null);
         Flash();
     }
 }

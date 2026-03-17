@@ -13,6 +13,7 @@ namespace Buu.BuuCode.Cards.Uncommon;
 public sealed class Reform() : BuuCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
     public override bool GainsBlock => true;
+    public override HashSet<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(8m, ValueProp.Move)];
 

@@ -1,7 +1,9 @@
 using BaseLib.Abstracts;
 using Buu.BuuCode.Cards.Basic;
+using Buu.BuuCode.Cards.Common;
 using Buu.BuuCode.Cards.Rare;
 using Buu.BuuCode.Cards.Uncommon;
+using Buu.BuuCode.Config;
 using Buu.BuuCode.Relics;
 using Godot;
 using MegaCrit.Sts2.Core.Animation;
@@ -26,27 +28,162 @@ public class Buu : PlaceholderCharacterModel
     public override CharacterGender Gender => CharacterGender.Neutral;
     public override int StartingHp => 72;
 
-    public override IEnumerable<CardModel> StartingDeck =>
-    [
-        ModelDb.Card<KiBlast>(),
-        ModelDb.Card<KiBlast>(),
-        ModelDb.Card<KiBlast>(),
-        ModelDb.Card<Punch>(),
-        ModelDb.Card<Punch>(),
-        ModelDb.Card<Guard>(),
-        ModelDb.Card<Guard>(),
-        ModelDb.Card<global::Buu.BuuCode.Cards.Basic.Headbutt>(),
-        ModelDb.Card<global::Buu.BuuCode.Cards.Basic.Headbutt>(),
-        ModelDb.Card<GoodForm>(),
-        ModelDb.Card<EvilEmerges>(),
-        ModelDb.Card<GoodRiddance>(),
-        ModelDb.Card<SuperAura>()
-    ];
+    private static IEnumerable<CardModel> StarterDeck => BuuModConfig.StarterDeckSelection switch
+    {
+        StarterDeckSelection.Default => BuuStarterDecks.Default,
+        StarterDeckSelection.StanceDance => BuuStarterDecks.StanceDance,
+        StarterDeckSelection.KiEngine => BuuStarterDecks.KiEngine,
+        StarterDeckSelection.AggroMajin => BuuStarterDecks.AggroMajin,
+        StarterDeckSelection.BlockReform => BuuStarterDecks.BlockReform,
+        StarterDeckSelection.SuperBurst => BuuStarterDecks.SuperBurst,
+        StarterDeckSelection.CommonPile => BuuStarterDecks.CommonPile,
+        StarterDeckSelection.UncommonHeavy => BuuStarterDecks.UncommonHeavy,
+        StarterDeckSelection.RareShowcase => BuuStarterDecks.RareShowcase,
+        StarterDeckSelection.BasicsAndCommons => BuuStarterDecks.BasicsAndCommons,
+        StarterDeckSelection.StanceOnly => BuuStarterDecks.StanceOnly,
+        StarterDeckSelection.FullSpread => BuuStarterDecks.FullSpread,
+        StarterDeckSelection.AllCards => BuuStarterDecks.AllCards,
+        _ => BuuStarterDecks.Default
+    };
+
+    public override IEnumerable<CardModel> StartingDeck => StarterDeck;
+
+    private static class BuuStarterDecks
+    {
+        public static IEnumerable<CardModel> Default => [
+            ModelDb.Card<KiBlast>(), ModelDb.Card<KiBlast>(), ModelDb.Card<KiBlast>(),
+            ModelDb.Card<Punch>(), ModelDb.Card<Punch>(),
+            ModelDb.Card<Guard>(), ModelDb.Card<Guard>(),
+            ModelDb.Card<global::Buu.BuuCode.Cards.Basic.Headbutt>(), ModelDb.Card<global::Buu.BuuCode.Cards.Basic.Headbutt>(),
+            ModelDb.Card<GoodForm>(), ModelDb.Card<EvilEmerges>(), ModelDb.Card<GoodRiddance>(), ModelDb.Card<SuperAura>(),
+            ModelDb.Card<KiWell>()
+        ];
+        public static IEnumerable<CardModel> StanceDance => [
+            ModelDb.Card<GoodForm>(), ModelDb.Card<GoodForm>(), ModelDb.Card<EvilEmerges>(),
+            ModelDb.Card<GoodRiddance>(), ModelDb.Card<SuperAura>(),
+            ModelDb.Card<Guard>(), ModelDb.Card<Guard>(), ModelDb.Card<Reform>(),
+            ModelDb.Card<KiBlast>(), ModelDb.Card<KiBlast>()
+        ];
+        public static IEnumerable<CardModel> KiEngine => [
+            ModelDb.Card<Regenerate>(), ModelDb.Card<Regenerate>(), ModelDb.Card<FullAbsorption>(),
+            ModelDb.Card<KiBlast>(), ModelDb.Card<KiBlast>(), ModelDb.Card<KiBlast>(),
+            ModelDb.Card<KiStrike>(), ModelDb.Card<KiBarrier>(),
+            ModelDb.Card<Guard>(), ModelDb.Card<Reform>(), ModelDb.Card<GoodForm>(), ModelDb.Card<EvilEmerges>()
+        ];
+        public static IEnumerable<CardModel> AggroMajin => [
+            ModelDb.Card<EvilEmerges>(), ModelDb.Card<Punch>(), ModelDb.Card<Punch>(),
+            ModelDb.Card<KiBlast>(), ModelDb.Card<KiBlast>(), ModelDb.Card<VanillaBeam>(),
+            ModelDb.Card<FlurryPunch>(), ModelDb.Card<MajinBurst>(),
+            ModelDb.Card<Guard>(), ModelDb.Card<GoodForm>()
+        ];
+        public static IEnumerable<CardModel> BlockReform => [
+            ModelDb.Card<Guard>(), ModelDb.Card<Guard>(), ModelDb.Card<BubbleBarrier>(), ModelDb.Card<CandyArmor>(),
+            ModelDb.Card<Reform>(), ModelDb.Card<Reform>(), ModelDb.Card<GoodForm>(), ModelDb.Card<SuperForm>(),
+            ModelDb.Card<KiBlast>(), ModelDb.Card<Punch>()
+        ];
+        public static IEnumerable<CardModel> SuperBurst => [
+            ModelDb.Card<SuperAura>(), ModelDb.Card<SuperForm>(), ModelDb.Card<VanillaBeam>(),
+            ModelDb.Card<Punch>(), ModelDb.Card<Punch>(), ModelDb.Card<KiBlast>(), ModelDb.Card<KiBlast>(),
+            ModelDb.Card<Guard>(), ModelDb.Card<GoodRiddance>(), ModelDb.Card<GoodForm>()
+        ];
+        public static IEnumerable<CardModel> CommonPile => [
+            ModelDb.Card<KiBlast>(), ModelDb.Card<KiBlast>(), ModelDb.Card<CandyBeam>(), ModelDb.Card<FlurryPunch>(),
+            ModelDb.Card<Guard>(), ModelDb.Card<BubbleBarrier>(), ModelDb.Card<StretchArm>(), ModelDb.Card<ExplosiveBall>(),
+            ModelDb.Card<GoodForm>(), ModelDb.Card<EvilEmerges>()
+        ];
+        public static IEnumerable<CardModel> UncommonHeavy => [
+            ModelDb.Card<Reform>(), ModelDb.Card<PinkBlast>(), ModelDb.Card<VanillaBeam>(),
+            ModelDb.Card<Regenerate>(), ModelDb.Card<EvilEmerges>(), ModelDb.Card<GoodRiddance>(),
+            ModelDb.Card<Guard>(), ModelDb.Card<KiBlast>(), ModelDb.Card<Punch>(), ModelDb.Card<GoodForm>()
+        ];
+        public static IEnumerable<CardModel> RareShowcase => [
+            ModelDb.Card<FullAbsorption>(), ModelDb.Card<MajinBurst>(), ModelDb.Card<SuperForm>(), ModelDb.Card<SuperAura>(),
+            ModelDb.Card<GoodForm>(), ModelDb.Card<EvilEmerges>(), ModelDb.Card<Guard>(), ModelDb.Card<Guard>(),
+            ModelDb.Card<KiBlast>(), ModelDb.Card<KiBlast>(), ModelDb.Card<Punch>()
+        ];
+        public static IEnumerable<CardModel> BasicsAndCommons => [
+            ModelDb.Card<KiBlast>(), ModelDb.Card<KiBlast>(), ModelDb.Card<Punch>(), ModelDb.Card<Guard>(),
+            ModelDb.Card<global::Buu.BuuCode.Cards.Basic.Headbutt>(), ModelDb.Card<GoodForm>(),
+            ModelDb.Card<CandyBeam>(), ModelDb.Card<FlurryPunch>(), ModelDb.Card<BubbleBarrier>(), ModelDb.Card<StretchArm>(),
+            ModelDb.Card<ExplosiveBall>(), ModelDb.Card<CandyArmor>(), ModelDb.Card<KiStrike>(), ModelDb.Card<KiBarrier>()
+        ];
+        public static IEnumerable<CardModel> StanceOnly => [
+            ModelDb.Card<GoodForm>(), ModelDb.Card<GoodForm>(), ModelDb.Card<EvilEmerges>(), ModelDb.Card<EvilEmerges>(),
+            ModelDb.Card<GoodRiddance>(), ModelDb.Card<SuperAura>(), ModelDb.Card<SuperAura>(),
+            ModelDb.Card<Guard>(), ModelDb.Card<Guard>(), ModelDb.Card<KiBlast>()
+        ];
+        public static IEnumerable<CardModel> FullSpread => [
+            ModelDb.Card<KiBlast>(), ModelDb.Card<Punch>(), ModelDb.Card<Guard>(), ModelDb.Card<global::Buu.BuuCode.Cards.Basic.Headbutt>(), ModelDb.Card<GoodForm>(),
+            ModelDb.Card<CandyBeam>(), ModelDb.Card<FlurryPunch>(), ModelDb.Card<BubbleBarrier>(), ModelDb.Card<StretchArm>(), ModelDb.Card<ExplosiveBall>(), ModelDb.Card<CandyArmor>(), ModelDb.Card<KiStrike>(), ModelDb.Card<KiBarrier>(),
+            ModelDb.Card<Reform>(), ModelDb.Card<PinkBlast>(), ModelDb.Card<VanillaBeam>(), ModelDb.Card<Regenerate>(), ModelDb.Card<EvilEmerges>(), ModelDb.Card<GoodRiddance>(),
+            ModelDb.Card<FullAbsorption>(), ModelDb.Card<MajinBurst>(), ModelDb.Card<SuperForm>(), ModelDb.Card<SuperAura>()
+        ];
+        /// <summary>One copy of every card in the pool (84 cards). 100% coverage for testing.</summary>
+        public static IEnumerable<CardModel> AllCards => [
+            ModelDb.Card<KiBlast>(), ModelDb.Card<Punch>(), ModelDb.Card<Guard>(), ModelDb.Card<global::Buu.BuuCode.Cards.Basic.Headbutt>(), ModelDb.Card<GoodForm>(),
+            ModelDb.Card<Absorb>(), ModelDb.Card<BubbleTrap>(), ModelDb.Card<CalmGuard>(), ModelDb.Card<CandyBeam>(), ModelDb.Card<CandyArmor>(), ModelDb.Card<CandyCrush>(), ModelDb.Card<CandyHeal>(), ModelDb.Card<CandyPrison>(),
+            ModelDb.Card<CandyRain>(), ModelDb.Card<CandyWhip>(), ModelDb.Card<ChocolateBeam>(), ModelDb.Card<CunningStrike>(), ModelDb.Card<EnergyWave>(), ModelDb.Card<EvilGrin>(), ModelDb.Card<ExplosiveBall>(), ModelDb.Card<FatThrow>(),
+            ModelDb.Card<FlurryPunch>(), ModelDb.Card<GoodWill>(), ModelDb.Card<GutPunch>(), ModelDb.Card<KiBarrier>(), ModelDb.Card<KiStrike>(), ModelDb.Card<KiWell>(),
+            ModelDb.Card<CandyChorus>(), ModelDb.Card<KiSurge>(), ModelDb.Card<BuuStudy>(), ModelDb.Card<BlockToKi>(), ModelDb.Card<BuuForesight>(), ModelDb.Card<RetainedKi>(), ModelDb.Card<Mark>(),
+            ModelDb.Card<MadStrike>(), ModelDb.Card<PinkBarrage>(), ModelDb.Card<RagePunch>(),
+            ModelDb.Card<RollAttack>(), ModelDb.Card<RubberBounce>(), ModelDb.Card<StretchArm>(), ModelDb.Card<StretchGuard>(), ModelDb.Card<StretchSnap>(), ModelDb.Card<Tantrum>(), ModelDb.Card<ViciousBite>(), ModelDb.Card<BubbleBarrier>(),
+            ModelDb.Card<AbsorbAndGrow>(), ModelDb.Card<AbsorptionDrain>(), ModelDb.Card<AntennaBlast>(), ModelDb.Card<global::Buu.BuuCode.Cards.Uncommon.BodySlam>(), ModelDb.Card<CopyTechnique>(), ModelDb.Card<EvilAura>(), ModelDb.Card<EvilEmerges>(), ModelDb.Card<EvilRest>(),
+            ModelDb.Card<EvilRiddance>(), ModelDb.Card<EvilStare>(), ModelDb.Card<EvilWill>(), ModelDb.Card<GoodRiddance>(), ModelDb.Card<HeavySlam>(), ModelDb.Card<InnocentAura>(), ModelDb.Card<InnocentHeal>(), ModelDb.Card<InnocentRest>(),
+            ModelDb.Card<InnocentStare>(), ModelDb.Card<KaiBlessing>(), ModelDb.Card<KidBuuSpark>(), ModelDb.Card<MajinMark>(), ModelDb.Card<MajinRage>(), ModelDb.Card<global::Buu.BuuCode.Cards.Uncommon.Mimic>(), ModelDb.Card<PinkBlast>(), ModelDb.Card<Reform>(),
+            ModelDb.Card<ReformAgain>(), ModelDb.Card<ReformSmall>(), ModelDb.Card<Regenerate>(), ModelDb.Card<RubberBody>(), ModelDb.Card<SplitOff>(), ModelDb.Card<SuperFocus>(), ModelDb.Card<SuperSmug>(), ModelDb.Card<SuperStare>(),
+            ModelDb.Card<SuperWill>(), ModelDb.Card<TurnToCandy>(), ModelDb.Card<VanillaBeam>(),
+            ModelDb.Card<MajinFury>(), ModelDb.Card<SuperSpirit>(), ModelDb.Card<RegenerativeForm>(),
+            ModelDb.Card<MajinDraw>(), ModelDb.Card<StanceGuard>(), ModelDb.Card<CalmBlock>(), ModelDb.Card<CalmAura>(), ModelDb.Card<PinkWave>(), ModelDb.Card<StanceDuality>(), ModelDb.Card<BuuFasting>(), ModelDb.Card<RegularForm>(),
+            ModelDb.Card<BuuFusion>(), ModelDb.Card<ChocolateRain>(), ModelDb.Card<EternalBuu>(), ModelDb.Card<FullAbsorption>(), ModelDb.Card<MajinBurst>(), ModelDb.Card<MajinLegacy>(), ModelDb.Card<PinkNova>(), ModelDb.Card<SuperAura>(),
+            ModelDb.Card<SuperFinisher>(), ModelDb.Card<SuperForm>(), ModelDb.Card<VanishingBall>(), ModelDb.Card<global::Buu.BuuCode.Cards.Rare.Wish>(),
+            ModelDb.Card<global::Buu.BuuCode.Cards.Rare.Rage>(), ModelDb.Card<Omega>(), ModelDb.Card<Blasphemer>(), ModelDb.Card<BuuDeva>(), ModelDb.Card<MasterReality>()
+        ];
+    }
 
     public override IReadOnlyList<RelicModel> StartingRelics =>
-    [
-        ModelDb.Relic<CandyShell>()
-    ];
+        BuuModConfig.StartWithAllModRelics ? BuuStartingRelics.All : BuuStartingRelics.Default;
+
+    private static class BuuStartingRelics
+    {
+        public static IReadOnlyList<RelicModel> Default =>
+        [
+            ModelDb.Relic<CandyShell>()
+        ];
+
+        public static IReadOnlyList<RelicModel> All =>
+        [
+            ModelDb.Relic<CandyShell>(),
+            ModelDb.Relic<MajinCrest>(),
+            ModelDb.Relic<AbsorptionCell>(),
+            ModelDb.Relic<RegenerationPod>(),
+            ModelDb.Relic<BuuAntennaCharm>(),
+            ModelDb.Relic<Capsule>(),
+            ModelDb.Relic<PinkCrystal>(),
+            ModelDb.Relic<SupremeKaiEarring>(),
+            ModelDb.Relic<GumPiece>(),
+            ModelDb.Relic<ChocolateBar>(),
+            ModelDb.Relic<KiAmpoule>(),
+            ModelDb.Relic<SplitCell>(),
+            ModelDb.Relic<BuuMedal>(),
+            ModelDb.Relic<CandyWrapper>(),
+            ModelDb.Relic<AntennaRing>(),
+            ModelDb.Relic<KaiWatch>(),
+            ModelDb.Relic<RegenerationSeed>(),
+            ModelDb.Relic<AbsorptionOrb>(),
+            ModelDb.Relic<MajinBand>(),
+            ModelDb.Relic<PinkOrbFragment>(),
+            ModelDb.Relic<CandyCoin>(),
+            ModelDb.Relic<BuuBadge>(),
+            ModelDb.Relic<StretchGel>(),
+            ModelDb.Relic<EvilChip>(),
+            ModelDb.Relic<GoodRibbon>(),
+            ModelDb.Relic<FusionEarring>(),
+            ModelDb.Relic<RageBead>(),
+            ModelDb.Relic<CalmMedallion>(),
+            ModelDb.Relic<ReformShard>(),
+            ModelDb.Relic<BuuEssence>()
+        ];
+    }
 
     public override CardPoolModel CardPool => ModelDb.CardPool<BuuCardPool>();
     public override RelicPoolModel RelicPool => ModelDb.RelicPool<BuuRelicPool>();

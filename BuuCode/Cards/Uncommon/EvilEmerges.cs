@@ -15,5 +15,5 @@ public sealed class EvilEmerges() : BuuCard(0, CardType.Skill, CardRarity.Uncomm
         await BuuStanceCmd.EnterMajin(Owner.Creature, choiceContext);
     }
 
-    protected override void OnUpgrade() { }
+    protected override void OnUpgrade() => AddKeyword(CardKeyword.Innate);
 }

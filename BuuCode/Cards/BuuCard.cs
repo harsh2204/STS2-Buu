@@ -11,10 +11,26 @@ namespace Buu.BuuCode.Cards;
 public abstract class BuuCard(int cost, CardType type, CardRarity rarity, TargetType target) :
     CustomCardModel(cost, type, rarity, target)
 {
-    private string PortraitFileName => GetType().Name.ToSnakeCase();
+    private string PortraitFileName => ResolvePortraitFileName();
 
-    public override string CustomPortraitPath => $"{PortraitFileName}.png".BigCardImagePath();
+    // Use the normal portrait path as the big portrait fallback until per-card big portraits are present.
+    public override string CustomPortraitPath => $"{PortraitFileName}.png".CardImagePath();
 
     public override string PortraitPath => $"{PortraitFileName}.png".CardImagePath();
     public override string BetaPortraitPath => $"beta/{PortraitFileName}.png".CardImagePath();
+
+    private string ResolvePortraitFileName()
+    {
+        var defaultName = GetType().Name.ToSnakeCase();
+        return defaultName switch
+        {
+            "ki_strike" => "ki_blast",
+            "ki_barrier" => "bubble_barrier",
+            "ki_well" => "regenerate",
+            "majin_fury" => "evil_emerges",
+            "super_spirit" => "super_aura",
+            "regenerative_form" => "reform",
+            _ => defaultName
+        };
+    }
 }

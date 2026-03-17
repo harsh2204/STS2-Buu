@@ -5,6 +5,7 @@ using Buu.BuuCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 
 namespace Buu.BuuCode.Cards.Uncommon;
@@ -15,16 +16,17 @@ public sealed class Regenerate() : BuuCard(1, CardType.Skill, CardRarity.Uncommo
     private const decimal KiBase = 3m;
     private const decimal KiUpgraded = 5m;
 
-    private decimal KiAmount => IsUpgraded ? KiUpgraded : KiBase;
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<KiPower>((int)KiBase)];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        var amount = DynamicVars["KiPower"].IntValue;
         var kiPower = Owner.Creature.Powers.OfType<KiPower>().FirstOrDefault();
         if (kiPower != null)
-            await PowerCmd.ModifyAmount(kiPower, KiAmount, null, null);
+            await PowerCmd.ModifyAmount(kiPower, amount, null, null);
         else
-            await PowerCmd.Apply<KiPower>(Owner.Creature, KiAmount, Owner.Creature, null);
+            await PowerCmd.Apply<KiPower>(Owner.Creature, amount, Owner.Creature, null);
     }
 
-    protected override void OnUpgrade() { }
+    protected override void OnUpgrade() => DynamicVars["KiPower"].UpgradeValueBy((int)(KiUpgraded - KiBase));
 }

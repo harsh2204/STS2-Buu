@@ -13,7 +13,10 @@ public abstract class BuuRelic : CustomRelicModel
 
     public override string PackedIconPath => $"{IconFileName}.png".RelicImagePath();
 
-    protected override string PackedIconOutlinePath => $"{IconFileName}_outline.png".RelicImagePath();
+    protected override string PackedIconOutlinePath =>
+        Godot.ResourceLoader.Exists($"{IconFileName}_outline.png".RelicImagePath())
+            ? $"{IconFileName}_outline.png".RelicImagePath()
+            : "relic_outline.png".RelicImagePath();
 
     protected override string BigIconPath => $"{IconFileName}.png".BigRelicImagePath();
 }

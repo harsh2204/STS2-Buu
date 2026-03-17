@@ -1,6 +1,8 @@
 using Godot;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Modding;
+using BaseLib.Config;
+using Buu.BuuCode.Config;
 
 namespace Buu;
 
@@ -13,6 +15,8 @@ public partial class MainFile : Node
 
     public static void Initialize()
     {
+        ModConfigRegistry.Register(ModId, new BuuModConfig());
+
         Harmony harmony = new(ModId);
 
         harmony.PatchAll();

@@ -112,4 +112,13 @@
     <Target Name="GodotPublishSkipped" AfterTargets="Publish" Condition="'$(GodotPath)' == '' or !Exists('$(GodotPath)')">
         <Message Text="Skipping Godot .pck export because GodotPath is not configured." Importance="high" />
     </Target>
+
+    <Target Name="PublishOnBuild"
+            AfterTargets="Build"
+            Condition="'$(RunPublishAfterBuild)' != 'false' and '$(IsInnerBuildPublish)' != 'true'">
+        <Message Text="Running publish automatically after build." Importance="high" />
+        <MSBuild Projects="$(MSBuildProjectFullPath)"
+                 Targets="Publish"
+                 Properties="RunPublishAfterBuild=false;IsInnerBuildPublish=true" />
+    </Target>
 </Project>
