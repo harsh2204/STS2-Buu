@@ -14,7 +14,7 @@ public abstract class BuuStancePower : BuuPower
 
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.None;
-    protected override bool IsVisibleInternal => false;
+    protected override bool IsVisibleInternal => true;
 
     protected virtual string? AuraScenePath => null;
 
@@ -49,7 +49,11 @@ public abstract class BuuStancePower : BuuPower
         var position = oldVisuals?.Position ?? new Vector2(0, -19.805f);
         var scale = oldVisuals?.Scale ?? Vector2.One;
 
-        oldVisuals?.QueueFree();
+        if (oldVisuals != null)
+        {
+            creatureNode.RemoveChild(oldVisuals);
+            oldVisuals.QueueFree();
+        }
 
         var scene = GD.Load<PackedScene>(scenePath);
         if (scene == null) return;

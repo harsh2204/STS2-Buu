@@ -1,5 +1,7 @@
 using BaseLib.Abstracts;
 using Buu.BuuCode.Cards.Basic;
+using Buu.BuuCode.Cards.Rare;
+using Buu.BuuCode.Cards.Uncommon;
 using Buu.BuuCode.Relics;
 using Godot;
 using MegaCrit.Sts2.Core.Animation;
@@ -35,7 +37,10 @@ public class Buu : PlaceholderCharacterModel
         ModelDb.Card<Guard>(),
         ModelDb.Card<global::Buu.BuuCode.Cards.Basic.Headbutt>(),
         ModelDb.Card<global::Buu.BuuCode.Cards.Basic.Headbutt>(),
-        ModelDb.Card<GoodForm>()
+        ModelDb.Card<GoodForm>(),
+        ModelDb.Card<EvilEmerges>(),
+        ModelDb.Card<GoodRiddance>(),
+        ModelDb.Card<SuperAura>()
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>

@@ -8,7 +8,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 namespace Buu.BuuCode.Cards.Uncommon;
 
 [Pool(typeof(BuuCardPool))]
-public sealed class EvilEmerges() : BuuCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+public sealed class EvilEmerges() : BuuCard(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
