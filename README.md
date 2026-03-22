@@ -1,110 +1,112 @@
 # Buu
 
-A **Slay the Spire 2** playable character mod: **Majin Buu** from *Dragon Ball Z*, with three combat stances—**Regular** (Good Buu), **Majin** (Evil Buu), and **Super** (Super Buu)—plus a **Ki** secondary resource, a full card and relic pool, Godot-driven visuals, and localization under `Buu/localization/`.
+Playable character mod for **Slay the Spire 2**: **Majin Buu** from *Dragon Ball Z*. Buu uses three combat stances—Regular (Good Buu), Majin (Evil Buu), and Super (Super Buu)—a **Ki** secondary resource, and a full set of cards, relics, and powers. Visuals and UI assets live under Godot resources in `Buu/`; gameplay logic is C# under `BuuCode/`. English strings are in `Buu/localization/eng/`.
 
 | | |
 | --- | --- |
-| **Mod ID** | `Buu` |
-| **Manifest** | [`Buu.json`](Buu.json) |
-| **Depends on** | [BaseLib](https://github.com/Alchyr/BaseLib-StS2) (`BaseLib` in `Buu.json`) |
-| **Game** | [Slay the Spire 2](https://store.steampowered.com/app/2868840/) (MegaCrit) |
-| **Catalog (live)** | **[harsh2204.github.io/STS2-Buu](https://harsh2204.github.io/STS2-Buu/)** — cards, relics, stances, powers |
+| Mod ID | `Buu` |
+| Manifest | [`Buu.json`](Buu.json) |
+| Depends on | [BaseLib-StS2](https://github.com/Alchyr/BaseLib-StS2) — required sibling mod `BaseLib` |
+| Game | [Slay the Spire 2 on Steam](https://store.steampowered.com/app/2868840/) |
+| Live catalog | [harsh2204.github.io/STS2-Buu](https://harsh2204.github.io/STS2-Buu/) |
 
 ---
 
 ## Requirements
 
-- A legal copy of **Slay the Spire 2** with mod support enabled.
-- **[BaseLib](https://github.com/Alchyr/BaseLib-StS2)** installed in the game’s `mods` folder (same layout as the [BaseLib releases](https://github.com/Alchyr/BaseLib-StS2/releases): `BaseLib.dll`, `BaseLib.pck`, `BaseLib.json`). The project build can copy these from NuGet; see below.
-- **.NET 9** SDK for building the C# assembly.
-- **[Godot / MegaDot 4.5.1](https://godotengine.org/)** (C# / mono editor matching the game’s **Megadot** fork) if you want the post-build step to export `Buu.pck`. The `.csproj` notes that the game will not load a `.pck` built with a **newer** Godot than the one STS2 ships with—keep versions aligned.
+**To play**
 
-Runtime references (ship with the game install, not committed here) include `sts2.dll`, **`0Harmony`**, and **SmartFormat**, resolved from your `data_sts2_*` folder via [`Buu.csproj`](Buu.csproj).
+- Owned copy of Slay the Spire 2 with mod support enabled.
+- [BaseLib-StS2](https://github.com/Alchyr/BaseLib-StS2) installed under the game’s `mods/BaseLib/` folder: `BaseLib.dll`, `BaseLib.pck`, and `BaseLib.json` as in the upstream release layout.
 
----
+**To build this repository**
 
-## Install (players)
-
-1. Install **BaseLib** into `…/Slay the Spire 2/mods/BaseLib/` as documented in the [BaseLib-StS2 README](https://github.com/Alchyr/BaseLib-StS2).
-2. Copy this mod’s folder into `…/mods/BuuMod/` (or your chosen folder name) so it contains at least:
-   - `Buu.dll`
-   - `Buu.json`
-   - `Buu.pck` (if you use Godot assets from this repo)
-
-Exact folder naming can follow your launcher; the important part is that **`Buu.json`** sits next to **`Buu.dll`** and the `.pck` when `has_pck` is true.
+- [.NET 9 SDK](https://dotnet.microsoft.com/download).
+- Game install path available so MSBuild can resolve `sts2.dll`, `0Harmony.dll`, and `SmartFormat.dll` from the platform-specific `data_sts2_*` directory inside the game folder. Paths are configured in [`Buu.csproj`](Buu.csproj).
+- Optional: [Godot 4.5.1](https://godotengine.org/) or the **Megadot** editor build that matches Slay the Spire 2, if you want automated export of `Buu.pck`. The `.csproj` warns that a `.pck` produced with a **newer** editor than the game uses may not load; keep the editor version aligned with STS2.
 
 ---
 
-## Build (developers)
+## Installation
 
-1. Clone the repository and open `Buu.sln` (or build from the CLI with `dotnet build`).
-2. Set paths in **`Buu.csproj`** for your machine if defaults do not match:
-   - **`GodotPath`** — executable used for `--export-pack` (Windows example in repo).
-   - **`SteamLibraryPath`**, **`Sts2Path`**, **`ModsPath`**, **`Sts2DataDir`** — so `sts2.dll`, `0Harmony.dll`, and output `mods` folder resolve correctly.
-3. Build: the project references **[Alchyr.Sts2.BaseLib](https://www.nuget.org/packages/Alchyr.Sts2.BaseLib)** and **[Alchyr.Sts2.ModAnalyzers](https://www.nuget.org/packages/Alchyr.Sts2.ModAnalyzers)** from NuGet, copies **`Buu.dll`** + **`Buu.json`** into your STS2 `mods` folder, copies **BaseLib** artifacts into `mods/BaseLib/`, and (when `GodotPath` exists) exports **`Buu.pck`**.
+1. Install BaseLib as described in the [BaseLib-StS2 README](https://github.com/Alchyr/BaseLib-StS2).
+2. Copy this mod into `Slay the Spire 2/mods/`, in a folder named to match the project output (for example `BuuMod/`). The game needs `Buu.dll` and `Buu.json` in the same directory. If the manifest sets `has_pck` to true, include `Buu.pck` as well.
+3. Launch the game, enable mods, and select Buu from the character roster once dependencies load.
 
-For a deeper checklist (scenes, localization, assets, stance design), see **[`PLAN.md`](PLAN.md)**.
+If you use a different mods directory name, keep `Buu.json` beside `Buu.dll` so the loader can bind the assembly to the manifest.
 
 ---
 
-## Catalog site
+## Building from source
 
-The mod’s **static catalog** (card pool with portraits, relics, stances, powers) is published at **[https://harsh2204.github.io/STS2-Buu/](https://harsh2204.github.io/STS2-Buu/)** via [GitHub Pages](https://docs.github.com/en/pages). Content is generated from source by [`docs/build_data.py`](docs/build_data.py) in [`.github/workflows/pages.yml`](.github/workflows/pages.yml).
+1. Clone the repository and open `Buu.sln`, or run `dotnet build` from the solution directory.
+2. Edit [`Buu.csproj`](Buu.csproj) so `SteamLibraryPath`, `Sts2Path`, `ModsPath`, `Sts2DataDir`, and optionally `GodotPath` match your machine. On Windows the file includes an example `GodotPath`; Linux and macOS blocks use conventional Steam layout defaults.
+3. Build the solution. NuGet supplies [Alchyr.Sts2.BaseLib](https://www.nuget.org/packages/Alchyr.Sts2.BaseLib) and [Alchyr.Sts2.ModAnalyzers](https://www.nuget.org/packages/Alchyr.Sts2.ModAnalyzers). The post-build steps copy `Buu.dll` and `Buu.json` into your configured `mods` folder, refresh `mods/BaseLib/` from the BaseLib package, and when `GodotPath` points to a valid executable, run a headless export so `Buu.pck` lands next to the DLL.
 
-**Local preview:** from the BuuMod root run `python docs/serve_local.py` — that regenerates data and serves the `docs/` folder over HTTP so `data.json` loads correctly (use `--no-browser` if you do not want a tab opened). Opening `docs/index.html` as a bare file will not load the catalog.
+Implementation status, scene checklist, stance tuning notes, and asset tracking live in [`PLAN.md`](PLAN.md).
 
 ---
 
-## Repository layout (short)
+## Catalog website
 
-| Path | Role |
+The [STS2 Buu catalog](https://harsh2204.github.io/STS2-Buu/) is a static site that lists cards (with portraits and upgrade toggles), relics, stances, and powers. It is hosted on GitHub Pages.
+
+- **Production:** pushes that touch `Buu/`, `BuuCode/`, `docs/`, or the Pages workflow trigger [`.github/workflows/pages.yml`](.github/workflows/pages.yml), which runs [`docs/build_data.py`](docs/build_data.py) and uploads the `docs/` tree as the site artifact.
+- **Local preview:** from the repository root run `python docs/serve_local.py`. The script regenerates catalog data and serves over HTTP so the browser can fetch `data.json`. Pass `--no-browser` to skip opening a tab. Opening `docs/index.html` directly from disk will fail because browsers block that fetch.
+
+---
+
+## Project structure
+
+| Path | Purpose |
 | --- | --- |
-| `BuuCode/` | C#: character, card/relic/power models, stances, Harmony patches, nodes |
-| `Buu/` | Godot resources: `scenes/`, `animation/`, `images/`, `localization/` |
-| `docs/` | Static catalog for **[harsh2204.github.io/STS2-Buu](https://harsh2204.github.io/STS2-Buu/)**; CI runs [`docs/build_data.py`](docs/build_data.py) (see [`.github/workflows/pages.yml`](.github/workflows/pages.yml)) |
-| `image_gen/` | Prompts and asset notes for generated art pipelines |
+| `BuuCode/` | C# gameplay code: character definition, card and relic models, stance powers, commands, Harmony patches, and custom nodes. |
+| `Buu/` | Godot side: `scenes/`, Spine-driven `animation/`, `images/` for portraits and UI, and `localization/` JSON consumed by the game. |
+| `docs/` | Source for the public catalog: `index.html`, styles, scripts, `build_data.py`, and `serve_local.py`. Generated assets such as `data.json` are produced by the build script or CI. |
+| `image_gen/` | Prompts, size notes, and generated or hand-sliced art pipelines that feed into `Buu/images/`. |
 
 ---
 
-## Fan work and IP
+## Fan work and intellectual property
 
-This mod is a **non-commercial fan project**. *Dragon Ball* characters and iconography are the property of their respective rights holders. **Slay the Spire 2** is the property of **MegaCrit**. This project is not affiliated with or endorsed by either.
+This mod is a non-commercial fan work. *Dragon Ball* names and imagery belong to their respective owners. Slay the Spire 2 is the property of MegaCrit. This project is not affiliated with or endorsed by those rights holders.
 
 ---
 
-## Acknowledgments
+## Credits
 
-These projects and communities made **Buu** practical to build and ship. Thank you.
+The following projects and tools made Buu possible. Thanks to everyone who maintains them.
 
-### Modding stack (STS2)
+**Slay the Spire 2 modding**
 
-- **[Alchyr / BaseLib-StS2](https://github.com/Alchyr/BaseLib-StS2)** — Shared library, UI hooks, multiplayer-minded patterns, and the **`BaseLib`** dependency every character mod expects. NuGet: [`Alchyr.Sts2.BaseLib`](https://www.nuget.org/packages/Alchyr.Sts2.BaseLib).
-- **[Alchyr / ModTemplate-StS2](https://github.com/Alchyr/ModTemplate-StS2)** — **`dotnet new alchyrsts2charmod`** template this mod grew from (Godot `.pck` + C# DLL layout, manifest, BaseLib wiring).
-- **[BaseLib Wiki](https://alchyr.github.io/BaseLib-Wiki/)** — Documentation for BaseLib-driven STS2 modding.
+- [Alchyr / BaseLib-StS2](https://github.com/Alchyr/BaseLib-StS2) — shared mod library, UI hooks, and multiplayer-oriented helpers. Consumed via NuGet as [Alchyr.Sts2.BaseLib](https://www.nuget.org/packages/Alchyr.Sts2.BaseLib).
+- [Alchyr / ModTemplate-StS2](https://github.com/Alchyr/ModTemplate-StS2) — `dotnet new alchyrsts2charmod` template: Godot pack export, C# mod layout, manifest, and BaseLib wiring.
+- [BaseLib Wiki](https://alchyr.github.io/BaseLib-Wiki/) — documentation for BaseLib-based STS2 mods.
+- [lamali292 / WatcherMod](https://github.com/lamali292/WatcherMod/) — early STS2 character mod; useful reference for stance-heavy characters and BaseLib plus Godot packaging.
 
-### Game engine and runtime libraries
+**Engine and runtime shipped with the game**
 
-- **[Godot Engine](https://github.com/godotengine/godot)** — Under the hood of STS2’s content pipeline; this mod uses **Godot 4.5**-compatible exports via **`Godot.NET.Sdk`** in the `.csproj`.
-- **[Harmony](https://github.com/pardeike/Harmony)** (Andreas Pardeike) — Runtime method patching; the game supplies **`0Harmony.dll`** alongside `sts2.dll`.
-- **[SmartFormat.NET](https://github.com/axuno/SmartFormat.NET)** — String formatting used by the game’s localization stack; referenced from the game data directory like Harmony.
+- [Godot Engine](https://github.com/godotengine/godot) — STS2 content pipeline; this mod targets Godot 4.5 via `Godot.NET.Sdk` in the project file.
+- [Harmony](https://github.com/pardeike/Harmony) by Andreas Pardeike — runtime IL patching; the game supplies `0Harmony.dll` next to `sts2.dll`.
+- [SmartFormat.NET](https://github.com/axuno/SmartFormat.NET) — template formatting used with the game’s localization; referenced from the same data directory as Harmony.
 
-### Research, data, and reverse-engineering tooling
+**Game data research**
 
-Development and balance notes in the parent workspace lean on the same ecosystem as **[Spire Codex](https://spire-codex.com)** (decompiled `sts2.dll`, extracted packs, and structured game data). Helpful upstream tools called out there:
+- [Spire Codex](https://spire-codex.com) — browsable database and API over parsed Slay the Spire 2 data.
+- [ptrlrd / spire-codex](https://github.com/ptrlrd/spire-codex/) — open-source extraction, decompilation, parsers, and tooling behind that project.
+- [ILSpy](https://github.com/icsharpcode/ILSpy) — decompilation of `sts2.dll` for reading game APIs and models.
+- [GDRE Tools](https://github.com/bruvzg/gdsdecomp) — Godot `.pck` recovery and asset extraction.
 
-- **[ILSpy](https://github.com/icsharpcode/ILSpy)** — C# decompilation for inspecting `sts2.dll` and game APIs.
-- **[GDRE Tools (gdsdecomp)](https://github.com/bruvzg/gdsdecomp)** — Godot `.pck` extraction and asset recovery.
+**Animation**
 
-### Animation
+- [Spine](https://esotericsoftware.com/) and [spine-runtimes](https://github.com/EsotericSoftware/spine-runtimes) — skeletal animation stack used by STS2; Buu’s animation assets under `Buu/animation/` follow that pipeline.
 
-- **[Spine](https://esotericsoftware.com/)** / **[spine-runtimes](https://github.com/EsotericSoftware/spine-runtimes)** — Spine is the skeletal animation pipeline STS2 uses; Buu’s `Buu/animation/` content follows that workflow.
+**Documentation site**
 
-### Hosting and CI
-
-- **[GitHub Actions](https://github.com/features/actions)** — Builds the **`docs/`** catalog and deploys it to **[harsh2204.github.io/STS2-Buu](https://harsh2204.github.io/STS2-Buu/)** with **`actions/deploy-pages`**.
+- [GitHub Actions](https://github.com/features/actions) and [GitHub Pages](https://docs.github.com/en/pages) — CI build for the catalog and deployment to `harsh2204.github.io`.
 
 ---
 
 ## Author
 
-**Harsh Gupta** — see [`Buu.json`](Buu.json) for the packaged `author` field and version.
+**Harsh Gupta** — author field and semantic version are recorded in [`Buu.json`](Buu.json).
