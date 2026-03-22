@@ -487,15 +487,17 @@ main {
   border-color: var(--pink-dim);
 }
 
-.card-grid,
-.relic-grid {
+.card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(168px, 1fr));
   gap: 1rem;
 }
 
+/* Dense grid: in-game relic art sits ~64px on a dark round plate */
 .relic-grid {
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(124px, 1fr));
+  gap: 0.65rem;
 }
 
 .tile {
@@ -651,13 +653,68 @@ main {
 }
 
 .relic-tile .tile-fig {
-  aspect-ratio: 1;
-  padding: 1rem;
+  position: relative;
+  aspect-ratio: unset;
+  min-height: 5.25rem;
+  padding: 0.55rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent);
+}
+
+/* Light black circular backing (STS2 relic row) */
+.relic-tile .tile-fig::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.48);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.07),
+    0 2px 10px rgba(0, 0, 0, 0.35);
 }
 
 .relic-tile .tile-fig img {
+  position: relative;
+  z-index: 1;
+  width: 64px;
+  height: 64px;
+  max-width: 64px;
+  max-height: 64px;
   object-fit: contain;
-  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4));
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.45));
+}
+
+.relic-tile .tile-placeholder {
+  position: relative;
+  z-index: 1;
+  width: 64px;
+  height: 64px;
+  padding: 0.25rem;
+  font-size: 0.62rem;
+}
+
+.relic-tile .tile-body {
+  padding: 0.5rem 0.6rem 0.75rem;
+}
+
+.relic-tile .tile-title {
+  font-size: 0.82rem;
+}
+
+.relic-tile .tile-desc {
+  font-size: 0.72rem;
+  -webkit-line-clamp: 5;
+}
+
+.relic-tile .relic-flavor {
+  font-size: 0.72rem;
+  -webkit-line-clamp: 3;
 }
 
 .relic-flavor {
