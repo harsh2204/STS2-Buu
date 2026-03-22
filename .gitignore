@@ -17,3 +17,6 @@ docs/data.json
 docs/assets/
 
 __pycache__/
+
+# Local release zips from package-release.ps1
+releases/

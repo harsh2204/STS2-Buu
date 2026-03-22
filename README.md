@@ -29,6 +29,16 @@ Playable character mod for **Slay the Spire 2**: **Majin Buu** from *Dragon Ball
 
 ## Installation
 
+### Quick install (release zip)
+
+1. Install [BaseLib-StS2](https://github.com/Alchyr/BaseLib-StS2) first so the game has `mods/BaseLib/` with `BaseLib.dll`, `BaseLib.pck`, and `BaseLib.json` (see the upstream release layout).
+2. Download the latest **`Buu-mod-*.zip`** from [**GitHub Releases**](https://github.com/harsh2204/STS2-Buu/releases).
+3. Extract the zip. You should get a **`Buu`** folder containing `Buu.dll`, `Buu.json`, and (when `has_pck` is true in the manifest) `Buu.pck`.
+4. Place that **`Buu`** folder inside the game’s **`mods`** directory—next to **`BaseLib`**—e.g. `Slay the Spire 2/mods/Buu/`.
+5. Launch Slay the Spire 2, enable mods, and pick Buu from the character roster once dependencies load.
+
+### From source (or custom folder layout)
+
 1. Install BaseLib as described in the [BaseLib-StS2 README](https://github.com/Alchyr/BaseLib-StS2).
 2. Copy this mod into `Slay the Spire 2/mods/`, in a folder named to match the project output (for example `BuuMod/`). The game needs `Buu.dll` and `Buu.json` in the same directory. If the manifest sets `has_pck` to true, include `Buu.pck` as well.
 3. Launch the game, enable mods, and select Buu from the character roster once dependencies load.
