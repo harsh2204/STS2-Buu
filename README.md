@@ -53,8 +53,6 @@ If you use a different mods directory name, keep `Buu.json` beside `Buu.dll` so 
 2. Edit [`Buu.csproj`](Buu.csproj) so `SteamLibraryPath`, `Sts2Path`, `ModsPath`, `Sts2DataDir`, and optionally `GodotPath` match your machine. On Windows the file includes an example `GodotPath`; Linux and macOS blocks use conventional Steam layout defaults.
 3. Build the solution. NuGet supplies [Alchyr.Sts2.BaseLib](https://www.nuget.org/packages/Alchyr.Sts2.BaseLib) and [Alchyr.Sts2.ModAnalyzers](https://www.nuget.org/packages/Alchyr.Sts2.ModAnalyzers). The post-build steps copy `Buu.dll` and `Buu.json` into your configured `mods` folder, refresh `mods/BaseLib/` from the BaseLib package, and when `GodotPath` points to a valid executable, run a headless export so `Buu.pck` lands next to the DLL.
 
-Implementation status, scene checklist, stance tuning notes, and asset tracking live in [`PLAN.md`](PLAN.md).
-
 ---
 
 ## Debugging (game logs)
