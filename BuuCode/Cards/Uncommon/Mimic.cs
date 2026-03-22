@@ -9,7 +9,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 namespace Buu.BuuCode.Cards.Uncommon;
 
 [Pool(typeof(BuuCardPool))]
-public sealed class Mimic() : BuuCard(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+public sealed class Mimic() : BuuCard(0, CardType.Skill, CardRarity.Rare, TargetType.Self)
 {
     private const int DrawBase = 2;
     private const int DrawUpgraded = 3;

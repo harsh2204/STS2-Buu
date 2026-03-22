@@ -12,7 +12,7 @@ using MegaCrit.Sts2.Core.Models;
 namespace Buu.BuuCode.Cards.Uncommon;
 
 [Pool(typeof(BuuCardPool))]
-public sealed class AbsorbAndGrow() : BuuCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+public sealed class AbsorbAndGrow() : BuuCard(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
 {
     private const decimal KiBase = 2m;
     private const decimal KiUpgraded = 3m;

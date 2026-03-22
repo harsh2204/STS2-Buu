@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace Buu.BuuCode.Cards.Uncommon;
 
 [Pool(typeof(BuuCardPool))]
-public sealed class Reform() : BuuCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+public sealed class Reform() : BuuCard(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
 {
     public override bool GainsBlock => true;
     public override HashSet<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];

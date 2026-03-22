@@ -12,7 +12,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace Buu.BuuCode.Cards.Uncommon;
 
 [Pool(typeof(BuuCardPool))]
-public sealed class TurnToCandy() : BuuCard(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+public sealed class TurnToCandy() : BuuCard(1, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [

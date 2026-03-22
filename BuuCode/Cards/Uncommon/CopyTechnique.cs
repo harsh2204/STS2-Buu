@@ -13,6 +13,8 @@ namespace Buu.BuuCode.Cards.Uncommon;
 [Pool(typeof(BuuCardPool))]
 public sealed class CopyTechnique() : BuuCard(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
+    public override HashSet<CardKeyword> CanonicalKeywords => [CardKeyword.Sly];
+
     private const int KiGain = 1;
     private const int DrawBase = 2;
     private const int DrawUpgraded = 3;

@@ -42,5 +42,6 @@ public sealed class EternalBuu() : BuuCard(2, CardType.Skill, CardRarity.Rare, T
     {
         DynamicVars.Block.UpgradeValueBy(BlockUpgraded - BlockBase);
         DynamicVars["KiPower"].UpgradeValueBy((int)(KiUpgraded - KiBase));
+        AddKeyword(CardKeyword.Eternal);
     }
 }

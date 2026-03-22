@@ -10,9 +10,9 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace Buu.BuuCode.Cards.Uncommon;
 
 [Pool(typeof(BuuCardPool))]
-public sealed class BodySlam() : BuuCard(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+public sealed class BodySlam() : BuuCard(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(10m, ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(13m, ValueProp.Move)];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

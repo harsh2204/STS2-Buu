@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace Buu.BuuCode.Cards.Common;
 
 [Pool(typeof(BuuCardPool))]
-public sealed class KiBarrier() : BuuCard(1, CardType.Skill, CardRarity.Basic, TargetType.Self)
+public sealed class KiBarrier() : BuuCard(1, CardType.Skill, CardRarity.Common, TargetType.Self)
 {
     private const decimal BlockBase = 5m;
     private const decimal BlockUpgraded = 8m;

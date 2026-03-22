@@ -30,7 +30,7 @@
   "BUU-REFORM.title": "Reform",
   "BUU-REFORM.description": "Gain {Block:diff()} [gold]Block[/gold]. Draw 1 card.",
   "BUU-SUPER_FORM.title": "Super Form",
-  "BUU-SUPER_FORM.description": "Spend 2 [pink]Ki[/pink]. Gain {Block:diff()} [gold]Block[/gold]. Gain 2 [gold]Energy[/gold].",
+  "BUU-SUPER_FORM.description": "[gold]Ancient.[/gold] Enter [gold]Super[/gold] stance. Gain {Block:diff()} [gold]Block[/gold]. Gain 3 [gold]Energy[/gold]. Draw {Cards:diff()} cards.",
   "BUU-MAJIN_BURST.title": "Majin Burst",
   "BUU-MAJIN_BURST.description": "Spend 2 [pink]Ki[/pink]. Deal {Damage:diff()} damage.",
   "BUU-FULL_ABSORPTION.title": "Full Absorption",
@@ -214,5 +214,15 @@
   "BUU-VICIOUS_BITE.title": "Vicious Bite",
   "BUU-VICIOUS_BITE.description": "Deal {Damage:diff()} damage.",
   "BUU-WISH.title": "Wish",
-  "BUU-WISH.description": "Gain {KiPower:diff()} [pink]Ki[/pink] and draw {Cards:diff()} cards."
+  "BUU-WISH.description": "Gain {KiPower:diff()} [pink]Ki[/pink] and draw {Cards:diff()} cards.",
+  "BUU-KI_FLURRY.title": "Ki Flurry",
+  "BUU-KI_FLURRY.description": "Deal {Damage:diff()} damage to a random enemy.",
+  "BUU-KI_VOLLEY.title": "Ki Volley",
+  "BUU-KI_VOLLEY.description": "Deal {Damage:diff()} damage to ALL enemies X times.",
+  "BUU-FLEETING_BLAST.title": "Fleeting Blast",
+  "BUU-FLEETING_BLAST.description": "Deal {Damage:diff()} damage to a random enemy.",
+  "BUU-PRIMORDIAL_BLAST.title": "Primordial Blast",
+  "BUU-PRIMORDIAL_BLAST.description": "Deal {Damage:diff()} damage.",
+  "BUU-EON_COVENANT.title": "Eon Covenant",
+  "BUU-EON_COVENANT.description": "Gain {Block:diff()} [gold]Block[/gold]. Gain {KiPower:diff()} [pink]Ki[/pink]."
 }

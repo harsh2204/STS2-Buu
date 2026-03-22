@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://buum3rchantscn"]
+
+[ext_resource type="Script" uid="uid://c3d4e5f6a7b8" path="res://BuuCode/Nodes/SNMerchantCharacter.cs" id="1_merch"]
+[ext_resource type="Texture2D" uid="uid://d4e5f6a7b8c9" path="res://Buu/images/buu/buu_merchant.png" id="2_art"]
+
+[node name="BuuMerchant" type="Node2D"]
+script = ExtResource("1_merch")
+
+[node name="SpineSprite" type="Node2D" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="SpineSprite"]
+offset_left = -342.0
+offset_top = -476.0
+offset_right = 392.36456
+offset_bottom = 17.0
+texture = ExtResource("2_art")

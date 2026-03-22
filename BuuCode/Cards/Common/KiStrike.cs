@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace Buu.BuuCode.Cards.Common;
 
 [Pool(typeof(BuuCardPool))]
-public sealed class KiStrike() : BuuCard(1, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy)
+public sealed class KiStrike() : BuuCard(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
 {
     private const decimal DamageBase = 6m;
     private const decimal DamageUpgraded = 9m;

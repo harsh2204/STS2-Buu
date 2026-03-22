@@ -1,5 +1,6 @@
 using BaseLib.Abstracts;
 using Buu.BuuCode.Cards.Basic;
+using Buu.BuuCode.Cards.Ancient;
 using Buu.BuuCode.Cards.Common;
 using Buu.BuuCode.Cards.Rare;
 using Buu.BuuCode.Cards.Uncommon;
@@ -118,18 +119,18 @@ public class Buu : PlaceholderCharacterModel
             ModelDb.Card<Reform>(), ModelDb.Card<PinkBlast>(), ModelDb.Card<VanillaBeam>(), ModelDb.Card<Regenerate>(), ModelDb.Card<EvilEmerges>(), ModelDb.Card<GoodRiddance>(),
             ModelDb.Card<FullAbsorption>(), ModelDb.Card<MajinBurst>(), ModelDb.Card<SuperForm>(), ModelDb.Card<SuperAura>()
         ];
-        /// <summary>One copy of every card in the pool (84 cards). 100% coverage for testing.</summary>
+        /// <summary>One copy of every card in the pool (113 cards). 100% coverage for testing.</summary>
         public static IEnumerable<CardModel> AllCards => [
             ModelDb.Card<KiBlast>(), ModelDb.Card<Punch>(), ModelDb.Card<Guard>(), ModelDb.Card<global::Buu.BuuCode.Cards.Basic.Headbutt>(), ModelDb.Card<GoodForm>(),
             ModelDb.Card<Absorb>(), ModelDb.Card<BubbleTrap>(), ModelDb.Card<CalmGuard>(), ModelDb.Card<CandyBeam>(), ModelDb.Card<CandyArmor>(), ModelDb.Card<CandyCrush>(), ModelDb.Card<CandyHeal>(), ModelDb.Card<CandyPrison>(),
             ModelDb.Card<CandyRain>(), ModelDb.Card<CandyWhip>(), ModelDb.Card<ChocolateBeam>(), ModelDb.Card<CunningStrike>(), ModelDb.Card<EnergyWave>(), ModelDb.Card<EvilGrin>(), ModelDb.Card<ExplosiveBall>(), ModelDb.Card<FatThrow>(),
-            ModelDb.Card<FlurryPunch>(), ModelDb.Card<GoodWill>(), ModelDb.Card<GutPunch>(), ModelDb.Card<KiBarrier>(), ModelDb.Card<KiStrike>(), ModelDb.Card<KiWell>(),
+            ModelDb.Card<FleetingBlast>(), ModelDb.Card<FlurryPunch>(), ModelDb.Card<GoodWill>(), ModelDb.Card<GutPunch>(), ModelDb.Card<KiBarrier>(), ModelDb.Card<KiFlurry>(), ModelDb.Card<KiStrike>(), ModelDb.Card<KiWell>(),
             ModelDb.Card<CandyChorus>(), ModelDb.Card<KiSurge>(), ModelDb.Card<BuuStudy>(), ModelDb.Card<BlockToKi>(), ModelDb.Card<BuuForesight>(), ModelDb.Card<RetainedKi>(), ModelDb.Card<Mark>(),
             ModelDb.Card<MadStrike>(), ModelDb.Card<PinkBarrage>(), ModelDb.Card<RagePunch>(),
             ModelDb.Card<RollAttack>(), ModelDb.Card<RubberBounce>(), ModelDb.Card<StretchArm>(), ModelDb.Card<StretchGuard>(), ModelDb.Card<StretchSnap>(), ModelDb.Card<Tantrum>(), ModelDb.Card<ViciousBite>(), ModelDb.Card<BubbleBarrier>(),
             ModelDb.Card<AbsorbAndGrow>(), ModelDb.Card<AbsorptionDrain>(), ModelDb.Card<AntennaBlast>(), ModelDb.Card<global::Buu.BuuCode.Cards.Uncommon.BodySlam>(), ModelDb.Card<CopyTechnique>(), ModelDb.Card<EvilAura>(), ModelDb.Card<EvilEmerges>(), ModelDb.Card<EvilRest>(),
-            ModelDb.Card<EvilRiddance>(), ModelDb.Card<EvilStare>(), ModelDb.Card<EvilWill>(), ModelDb.Card<GoodRiddance>(), ModelDb.Card<HeavySlam>(), ModelDb.Card<InnocentAura>(), ModelDb.Card<InnocentHeal>(), ModelDb.Card<InnocentRest>(),
-            ModelDb.Card<InnocentStare>(), ModelDb.Card<KaiBlessing>(), ModelDb.Card<KidBuuSpark>(), ModelDb.Card<MajinMark>(), ModelDb.Card<MajinRage>(), ModelDb.Card<global::Buu.BuuCode.Cards.Uncommon.Mimic>(), ModelDb.Card<PinkBlast>(), ModelDb.Card<Reform>(),
+            ModelDb.Card<EvilRiddance>(), ModelDb.Card<EvilStare>(), ModelDb.Card<EvilWill>(), ModelDb.Card<EonCovenant>(), ModelDb.Card<GoodRiddance>(), ModelDb.Card<HeavySlam>(), ModelDb.Card<InnocentAura>(), ModelDb.Card<InnocentHeal>(), ModelDb.Card<InnocentRest>(),
+            ModelDb.Card<InnocentStare>(), ModelDb.Card<KaiBlessing>(), ModelDb.Card<KidBuuSpark>(), ModelDb.Card<KiVolley>(), ModelDb.Card<MajinMark>(), ModelDb.Card<MajinRage>(), ModelDb.Card<global::Buu.BuuCode.Cards.Uncommon.Mimic>(), ModelDb.Card<PinkBlast>(), ModelDb.Card<PrimordialBlast>(), ModelDb.Card<Reform>(),
             ModelDb.Card<ReformAgain>(), ModelDb.Card<ReformSmall>(), ModelDb.Card<Regenerate>(), ModelDb.Card<RubberBody>(), ModelDb.Card<SplitOff>(), ModelDb.Card<SuperFocus>(), ModelDb.Card<SuperSmug>(), ModelDb.Card<SuperStare>(),
             ModelDb.Card<SuperWill>(), ModelDb.Card<TurnToCandy>(), ModelDb.Card<VanillaBeam>(),
             ModelDb.Card<MajinFury>(), ModelDb.Card<SuperSpirit>(), ModelDb.Card<RegenerativeForm>(),
@@ -158,6 +159,7 @@ public class Buu : PlaceholderCharacterModel
             ModelDb.Relic<RegenerationPod>(),
             ModelDb.Relic<BuuAntennaCharm>(),
             ModelDb.Relic<Capsule>(),
+            ModelDb.Relic<PrimordialSlime>(),
             ModelDb.Relic<PinkCrystal>(),
             ModelDb.Relic<SupremeKaiEarring>(),
             ModelDb.Relic<GumPiece>(),
@@ -175,12 +177,14 @@ public class Buu : PlaceholderCharacterModel
             ModelDb.Relic<CandyCoin>(),
             ModelDb.Relic<BuuBadge>(),
             ModelDb.Relic<StretchGel>(),
+            ModelDb.Relic<SweetVendorChit>(),
             ModelDb.Relic<EvilChip>(),
             ModelDb.Relic<GoodRibbon>(),
             ModelDb.Relic<FusionEarring>(),
             ModelDb.Relic<RageBead>(),
             ModelDb.Relic<CalmMedallion>(),
             ModelDb.Relic<ReformShard>(),
+            ModelDb.Relic<RestSiteCandy>(),
             ModelDb.Relic<BuuEssence>()
         ];
     }
@@ -196,6 +200,7 @@ public class Buu : PlaceholderCharacterModel
     public override string CustomMapMarkerPath => ResPrefix + "images/charui/map_marker_buu.png";
     public override string CustomIconPath => ResPrefix + "scenes/buu/buu_icon.tscn";
     public override string CustomVisualPath => ResPrefix + "scenes/buu/buu.tscn";
+    public override string CustomMerchantAnimPath => ResPrefix + "scenes/buu/buu_merchant.tscn";
 
     public override string CustomArmPointingTexturePath => ResPrefix + "images/buu/hands/multiplayer_hand_buu_point.png";
     public override string CustomArmRockTexturePath => ResPrefix + "images/buu/hands/multiplayer_hand_buu_rock.png";

@@ -11,7 +11,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace Buu.BuuCode.Cards.Uncommon;
 
 [Pool(typeof(BuuCardPool))]
-public sealed class StanceDuality() : BuuCard(1, CardType.Power, CardRarity.Uncommon, TargetType.None)
+public sealed class StanceDuality() : BuuCard(1, CardType.Power, CardRarity.Rare, TargetType.None)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<StanceDualityPower>(1)];
 

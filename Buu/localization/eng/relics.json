@@ -88,5 +88,14 @@
   "BUU-REFORM_SHARD.flavor": "Even broken, it returns.",
   "BUU-BUU_ESSENCE.title": "Buu Essence",
   "BUU-BUU_ESSENCE.description": "At the start of combat, gain 8 [pink]Ki[/pink].",
-  "BUU-BUU_ESSENCE.flavor": "A drop of endless possibility."
+  "BUU-BUU_ESSENCE.flavor": "A drop of endless possibility.",
+  "BUU-PRIMORDIAL_SLIME.title": "Primordial Slime",
+  "BUU-PRIMORDIAL_SLIME.description": "Whenever you enter a new Act, heal 5 HP.",
+  "BUU-PRIMORDIAL_SLIME.flavor": "Older than the candy.",
+  "BUU-REST_SITE_CANDY.title": "Rest Site Candy",
+  "BUU-REST_SITE_CANDY.description": "Whenever you Rest, heal 4 additional HP.",
+  "BUU-REST_SITE_CANDY.flavor": "Someone left it on the pillow.",
+  "BUU-SWEET_VENDOR_CHIT.title": "Sweet Vendor Chit",
+  "BUU-SWEET_VENDOR_CHIT.description": "Shop prices are reduced by 12%.",
+  "BUU-SWEET_VENDOR_CHIT.flavor": "Good at any candy counter."
 }

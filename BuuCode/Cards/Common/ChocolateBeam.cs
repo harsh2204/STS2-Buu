@@ -10,9 +10,9 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace Buu.BuuCode.Cards.Common;
 
 [Pool(typeof(BuuCardPool))]
-public sealed class ChocolateBeam() : BuuCard(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
+public sealed class ChocolateBeam() : BuuCard(2, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(8m, ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(11m, ValueProp.Move)];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

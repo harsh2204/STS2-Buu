@@ -12,11 +12,11 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace Buu.BuuCode.Cards.Common;
 
 [Pool(typeof(BuuCardPool))]
-public sealed class FlurryPunch() : BuuCard(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
+public sealed class FlurryPunch() : BuuCard(2, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
 {
     private const decimal KiCostOptional = 1m;
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(3m, ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(4m, ValueProp.Move)];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

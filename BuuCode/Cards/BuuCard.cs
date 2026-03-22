@@ -13,7 +13,7 @@ public abstract class BuuCard(int cost, CardType type, CardRarity rarity, Target
 {
     private string PortraitFileName => ResolvePortraitFileName();
 
-    // Use the normal portrait path as the big portrait fallback until per-card big portraits are present.
+    // Default: circular/small portrait in card_portraits/. Ancient full-bleed cards (e.g. SuperForm) override both to BigCardImagePath.
     public override string CustomPortraitPath => $"{PortraitFileName}.png".CardImagePath();
 
     public override string PortraitPath => $"{PortraitFileName}.png".CardImagePath();
