@@ -208,10 +208,33 @@ public class Buu : PlaceholderCharacterModel
     public override string CustomArmScissorsTexturePath => ResPrefix + "images/buu/hands/multiplayer_hand_buu_scissors.png";
 
     public override CustomEnergyCounter? CustomEnergyCounter =>
-        new CustomEnergyCounter(BuuEnergyLayerPath, EnergyOutlineColor, EnergyBurstColor);
+        EnergyOrbLayerTexturesExist()
+            ? new CustomEnergyCounter(BuuEnergyLayerPath, EnergyOutlineColor, EnergyBurstColor)
+            : null;
 
     private static string BuuEnergyLayerPath(int layer) =>
         ResPrefix + "images/ui/combat/energy_counters/buu/buu_orb_layer_" + layer + ".png";
+
+    /// <summary>
+    /// BaseLib clones the ironclad energy counter and assigns Layer1–5 via <see cref="ResourceLoader.Load{T}"/>.
+    /// Missing textures yield null and can blank combat on enter.
+    /// </summary>
+    public static bool EnergyOrbLayerTexturesExist()
+    {
+        for (var layer = 1; layer <= 5; layer++)
+        {
+            if (!ResourceLoader.Exists(BuuEnergyLayerPath(layer)))
+                return false;
+        }
+
+        return true;
+    }
+
+    public static bool BigEnergyIconTextureExists() =>
+        ResourceLoader.Exists(ResPrefix + "images/ui/combat/buu_energy_icon.png");
+
+    public static bool TextEnergyIconTextureExists() =>
+        ResourceLoader.Exists(ResPrefix + "images/ui/combat/text_buu_energy_icon.png");
 
     public override CreatureAnimator? SetupCustomAnimationStates(MegaSprite controller)
     {

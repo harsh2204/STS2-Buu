@@ -47,6 +47,20 @@ Implementation status, scene checklist, stance tuning notes, and asset tracking 
 
 ---
 
+## Debugging (game logs)
+
+When the game crashes, shows a black screen, or mods fail to load, check the engine log written by Slay the Spire 2 (Godot / MegaDot).
+
+| OS | Log directory |
+| --- | --- |
+| **Windows** | `%APPDATA%\SlayTheSpire2\logs\` (e.g. `C:\Users\<you>\AppData\Roaming\SlayTheSpire2\logs\`) |
+| **macOS** | `~/Library/Application Support/SlayTheSpire2/logs/` |
+| **Linux** | `~/.local/share/SlayTheSpire2/logs/` (if your distro uses XDG data home elsewhere, check that tree for `SlayTheSpire2/logs/`) |
+
+The active session is usually in **`godot.log`**; older runs may appear as `godot<timestamp>.log`. Search for `ERROR`, `SCRIPT ERROR`, your mod id (`Buu`), or `BaseLib` to narrow down load and combat issues.
+
+---
+
 ## Catalog website
 
 The [STS2 Buu catalog](https://harsh2204.github.io/STS2-Buu/) is a static site that lists cards (with portraits and upgrade toggles), relics, stances, and powers. It is hosted on GitHub Pages.

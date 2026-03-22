@@ -1,10 +1,8 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=2 format=3]
 
-[ext_resource type="Script" uid="uid://bn30l38ul4spu" path="res://BuuCode/Nodes/BNCreatureVisuals.cs" id="1_script"]
 [ext_resource type="PackedScene" uid="uid://u7fysxuknhdt" path="res://Buu/animation/buu_node.tscn" id="2_visuals"]
 
 [node name="Buu" type="Node2D"]
-script = ExtResource("1_script")
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
@@ -29,3 +27,11 @@ position = Vector2(3, -181)
 [node name="IntentPos" type="Marker2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(-2, -362)
+
+[node name="OrbPos" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -420)
+
+[node name="TalkPos" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -220)

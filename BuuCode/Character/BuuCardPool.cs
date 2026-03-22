@@ -32,8 +32,11 @@ public class BuuCardPool : CustomCardPoolModel
     //Color of small card icons
     public override Color DeckEntryCardColor => new("ffffff");
 
-    public override string? BigEnergyIconPath => Buu.ResPrefix + "images/ui/combat/buu_energy_icon.png";
-    public override string? TextEnergyIconPath => Buu.ResPrefix + "images/ui/combat/text_buu_energy_icon.png";
+    public override string? BigEnergyIconPath =>
+        Buu.BigEnergyIconTextureExists() ? Buu.ResPrefix + "images/ui/combat/buu_energy_icon.png" : null;
+
+    public override string? TextEnergyIconPath =>
+        Buu.TextEnergyIconTextureExists() ? Buu.ResPrefix + "images/ui/combat/text_buu_energy_icon.png" : null;
 
     public override bool IsColorless => false;
 
