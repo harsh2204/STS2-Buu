@@ -44,8 +44,13 @@ public static class BuuEnergyCounterVisualPatch
             __result.GetNode<TextureRect>("%Layers/Layer5").Texture =
                 ResourceLoader.Load<Texture2D>(LayerPath(5));
 
-            __result.GetNode<CpuParticles2D>("%BurstBack").Color = BuuBurstParticleColor;
-            __result.GetNode<CpuParticles2D>("%BurstFront").Color = BuuBurstParticleColor;
+            // Some cached energy counter scenes (e.g. from mod packs) omit burst nodes; GetNode would error every combat.
+            var burstBack = __result.GetNodeOrNull<CpuParticles2D>("%BurstBack");
+            var burstFront = __result.GetNodeOrNull<CpuParticles2D>("%BurstFront");
+            if (burstBack != null)
+                burstBack.Color = BuuBurstParticleColor;
+            if (burstFront != null)
+                burstFront.Color = BuuBurstParticleColor;
         }
         catch
         {

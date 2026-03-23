@@ -3,7 +3,7 @@
   "name": "Buu",
   "author": "Harsh Gupta",
   "description": "Majin Buu from Dragon Ball Z. Three stances: Regular (Good Buu), Majin (Evil Buu), Super (Super Buu).",
-  "version": "v0.1.0",
+  "version": "v0.1.1",
   "has_pck": true,
   "has_dll": true,
   "dependencies": ["BaseLib"],

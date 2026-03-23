@@ -21,9 +21,9 @@
 
     <!-- NOTE: Megadot is version 4.5.1, and the game won't load your .pck if the Godot version used is newer. -->
 
-    <!-- Windows -->
+    <!-- Windows: Megadot 4.5.1-m.8 (match STS2). Override with dotnet build -p:GodotPath="C:\path\to\MegaDot.exe" for other machines. -->
     <PropertyGroup Condition="'$(IsWindows)' == 'true'">
-        <GodotPath>C:\Users\laaluch\Downloads\megadot-4.5.1-m.8-windows-x86_64-llvm-editor-csharp\MegaDot_v4.5.1-stable_mono_win64.exe</GodotPath>
+        <GodotPath Condition="'$(GodotPath)' == ''">C:\Users\laaluch\Downloads\megadot-4.5.1-m.8-windows-x86_64-llvm-editor-csharp\MegaDot_v4.5.1-stable_mono_win64.exe</GodotPath>
         <SteamLibraryPath Condition="'$(SteamLibraryPath)' == ''">D:/SteamLibrary/steamapps</SteamLibraryPath>
 
         <Sts2Path Condition="'$(Sts2Path)' == ''">$(SteamLibraryPath)/common/Slay the Spire 2</Sts2Path>
