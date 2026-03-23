@@ -10,6 +10,7 @@ using Godot;
 using MegaCrit.Sts2.Core.Animation;
 using MegaCrit.Sts2.Core.Bindings.MegaSpine;
 using MegaCrit.Sts2.Core.Entities.Characters;
+using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Relics;
@@ -23,7 +24,6 @@ public class Buu : PlaceholderCharacterModel
 
     public static readonly Color Color = new("ff69b4"); // Buu pink
     public static readonly Color EnergyOutlineColor = new("ff69b4");
-    public static readonly Color EnergyBurstColor = new("ff1493");
 
     public override Color NameColor => Color;
     public override CharacterGender Gender => CharacterGender.Neutral;
@@ -202,33 +202,26 @@ public class Buu : PlaceholderCharacterModel
     public override string CustomVisualPath => ResPrefix + "scenes/buu/buu.tscn";
     public override string CustomMerchantAnimPath => ResPrefix + "scenes/buu/buu_merchant.tscn";
 
+    /// <summary>
+    /// Vanilla defect counter (full <see cref="MegaCrit.Sts2.Core.Nodes.Combat.NEnergyCounter"/> from base game).
+    /// Buu orb textures are applied in <see cref="Patches.BuuEnergyCounterVisualPatch"/>; mod-packed counter scenes
+    /// only yield <see cref="Godot.Control"/> (invalid cast). <c>CustomEnergyCounter</c> stays off to avoid BaseLib's
+    /// stale ironclad path from BaseLib.pck.
+    /// </summary>
+    public override string CustomEnergyCounterPath =>
+        SceneHelper.GetScenePath("combat/energy_counters/defect_energy_counter");
+
+    /// <summary>
+    /// Must stay null so BaseLib does not call <c>ChangeIroncladEnergy</c> (hardcoded ironclad path — same cache issue).
+    /// </summary>
+    public override CustomEnergyCounter? CustomEnergyCounter => null;
+
+    public override Color EnergyLabelOutlineColor => EnergyOutlineColor;
+
     public override string CustomArmPointingTexturePath => ResPrefix + "images/buu/hands/multiplayer_hand_buu_point.png";
     public override string CustomArmRockTexturePath => ResPrefix + "images/buu/hands/multiplayer_hand_buu_rock.png";
     public override string CustomArmPaperTexturePath => ResPrefix + "images/buu/hands/multiplayer_hand_buu_paper.png";
     public override string CustomArmScissorsTexturePath => ResPrefix + "images/buu/hands/multiplayer_hand_buu_scissors.png";
-
-    public override CustomEnergyCounter? CustomEnergyCounter =>
-        EnergyOrbLayerTexturesExist()
-            ? new CustomEnergyCounter(BuuEnergyLayerPath, EnergyOutlineColor, EnergyBurstColor)
-            : null;
-
-    private static string BuuEnergyLayerPath(int layer) =>
-        ResPrefix + "images/ui/combat/energy_counters/buu/buu_orb_layer_" + layer + ".png";
-
-    /// <summary>
-    /// BaseLib clones the ironclad energy counter and assigns Layer1–5 via <see cref="ResourceLoader.Load{T}"/>.
-    /// Missing textures yield null and can blank combat on enter.
-    /// </summary>
-    public static bool EnergyOrbLayerTexturesExist()
-    {
-        for (var layer = 1; layer <= 5; layer++)
-        {
-            if (!ResourceLoader.Exists(BuuEnergyLayerPath(layer)))
-                return false;
-        }
-
-        return true;
-    }
 
     public static bool BigEnergyIconTextureExists() =>
         ResourceLoader.Exists(ResPrefix + "images/ui/combat/buu_energy_icon.png");
